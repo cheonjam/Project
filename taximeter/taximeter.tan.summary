@@ -1,0 +1,76 @@
+--------------------------------------------------------------------------------------
+Timing Analyzer Summary
+--------------------------------------------------------------------------------------
+
+Type           : Worst-case tsu
+Slack          : N/A
+Required Time  : None
+Actual Time    : 16.300 ns
+From           : bus
+To             : bcd_seg:comb_7|segout[6]~269
+From Clock     : --
+To Clock       : clk
+Failed Paths   : 0
+
+Type           : Worst-case tco
+Slack          : N/A
+Required Time  : None
+Actual Time    : 34.400 ns
+From           : dot_matrix:comb_8|cnt_data[1]
+To             : dot_d[3]
+From Clock     : clk
+To Clock       : --
+Failed Paths   : 0
+
+Type           : Worst-case tpd
+Slack          : N/A
+Required Time  : None
+Actual Time    : 30.500 ns
+From           : reset
+To             : dot_scan[7]
+From Clock     : --
+To Clock       : --
+Failed Paths   : 0
+
+Type           : Worst-case th
+Slack          : N/A
+Required Time  : None
+Actual Time    : -1.700 ns
+From           : normal
+To             : meter_cal:comb_6|status.01
+From Clock     : --
+To Clock       : clk
+Failed Paths   : 0
+
+Type           : Clock Setup: 'clk'
+Slack          : N/A
+Required Time  : None
+Actual Time    : 31.55 MHz ( period = 31.700 ns )
+From           : fee_cal:comb_5|man[3]
+To             : bcd_seg:comb_7|segout[4]~267
+From Clock     : clk
+To Clock       : clk
+Failed Paths   : 0
+
+Type           : Clock Hold: 'clk'
+Slack          : Not operational: Clock Skew > Data Delay
+Required Time  : None
+Actual Time    : N/A
+From           : meter_cal:comb_6|status.10
+To             : fee_cal:comb_5|baek[0]
+From Clock     : clk
+To Clock       : clk
+Failed Paths   : 30
+
+Type           : Total number of failed paths
+Slack          : 
+Required Time  : 
+Actual Time    : 
+From           : 
+To             : 
+From Clock     : 
+To Clock       : 
+Failed Paths   : 30
+
+--------------------------------------------------------------------------------------
+

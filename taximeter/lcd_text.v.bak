@@ -1,0 +1,929 @@
+module lcd_text(clk, reset, control, lcd_e, lcd_rs, lcd_rw, lcd_data, normal, premium);
+	input clk, reset, control, normal, premium;
+	output lcd_e;
+	output reg lcd_rs, lcd_rw;
+	output reg [7:0] lcd_data;
+  
+	parameter [2:0] delay = 0, function_set = 1, disp_onoff = 2, entry_mode =3,
+		line1 = 4, line2 = 5, delay_t = 6, clear_disp = 7;
+	reg [2:0] lcd_state;
+	reg [11:0] cnt;
+	reg status;
+
+	always @(normal or premium or reset) begin
+		if(reset==1)
+			status <= 0;
+		else if(normal || premium)
+			status <= 1;
+	end
+
+	always @(posedge reset or posedge clk) begin
+		if(reset == 1) begin
+			lcd_state <= delay;
+		end
+		else begin
+			case(lcd_state)
+				delay:
+					begin 
+						if(cnt==70) begin
+						lcd_state <= function_set;
+						end
+					end
+				function_set:
+					begin
+						if(cnt==30) begin
+						lcd_state <= disp_onoff;
+						end
+					end
+				disp_onoff:
+					begin
+						if(cnt==30) begin
+						lcd_state <= entry_mode;
+						end
+					end
+				entry_mode:
+					begin
+						if(cnt==30) begin
+						lcd_state <= line1;
+						end
+					end
+				line1:
+					begin
+						if(cnt==20) begin
+							lcd_state <= line2;
+						end
+					end
+				line2:
+					begin
+						if(cnt==20) begin
+							lcd_state <= delay_t;
+						end
+					end
+				delay_t:
+					begin
+						if(cnt==4000) begin
+						lcd_state <= clear_disp;
+						end
+					end
+				clear_disp:
+					begin
+						if(cnt==2000) begin
+						lcd_state <= line1;
+						end
+					end
+			endcase
+		end
+	end
+    
+	always @(posedge reset or posedge clk) begin
+		if(reset==1) begin
+			cnt<=0;
+		end
+		else begin
+			case(lcd_state)
+				delay:
+					if(cnt==70) begin
+						cnt<=0;
+					end
+					else begin
+						cnt <= cnt +1;
+					end
+				function_set:
+					if(cnt==30) begin
+						cnt<=0;
+					end
+					else begin
+						cnt<=cnt+1;
+					end
+				disp_onoff:
+					if(cnt==30) begin
+						cnt<=0;
+					end
+					else begin
+						cnt<=cnt+1;
+					end    
+				entry_mode:
+					if(cnt==30) begin
+						cnt<=0;
+					end
+					else begin
+						cnt<=cnt+1;
+					end
+				line1:
+					if(cnt==20) begin
+						cnt<=0;
+					end
+					else begin
+						cnt<=cnt+1;
+					end
+				line2:
+					if(cnt==20) begin
+						cnt<=0;
+					end
+					else begin
+						cnt<=cnt+1;
+					end
+				delay_t:
+					if(cnt==4000) begin
+						cnt<=0;
+					end
+					else begin
+						cnt<=cnt+1;
+					end
+				clear_disp:
+					if(cnt==2000) begin
+						cnt<=0;
+					end
+					else begin
+						cnt<=cnt+1;
+					end
+			endcase
+		end
+	end
+  
+	always @(posedge reset or posedge clk) begin
+		if(reset==1)begin
+			lcd_rs <= 1'b0;
+			lcd_rw <= 1'b0;
+			lcd_data <= 8'b0000_0000;
+		end
+		else if(control==1)begin
+			case(lcd_state)
+				delay:
+					begin
+						lcd_rs <= 1'b0;
+						lcd_rw <= 1'b0;
+						lcd_data <= 8'b0000_0000;
+					end
+				function_set:
+					begin
+						lcd_rs <= 1'b0;
+						lcd_rw <= 1'b0;
+						lcd_data <= 8'b0011_1100;
+					end  
+				disp_onoff:
+					begin
+						lcd_rs <= 1'b0;
+						lcd_rw <= 1'b0;
+						lcd_data <= 8'b0000_1100;
+					end
+				entry_mode:
+					begin
+						lcd_rs <= 1'b0;
+						lcd_rw <= 1'b0;
+						lcd_data <= 8'b0000_0110;
+					end
+				clear_disp:
+					begin
+						lcd_rs <= 1'b0;
+						lcd_rw <= 1'b0;
+						lcd_data <= 8'b0000_0000;
+					end
+				delay_t:
+					begin
+						lcd_rs <= 1'b0;
+						lcd_rw <= 1'b0;
+						lcd_data <= 8'b0000_0010;
+					end
+				line1:
+					begin
+						lcd_rw<=1'b0;
+						if(status==0) begin //EMPTY MODE
+							case(cnt)
+								0:
+									begin
+										lcd_rs <= 1'b0;
+										lcd_data <= 8'b1000_0000;
+									end
+								1:
+									begin
+										lcd_rs <= 1'b1;
+										lcd_data <= 8'b1000_0000;
+									end
+								2:
+									begin
+										lcd_rs <= 1'b1;
+										lcd_data <= 8'b1000_0000;
+									end
+								3:
+									begin
+										lcd_rs <= 1'b1;
+										lcd_data <= 8'b1000_0000;
+									end
+								4:
+									begin
+										lcd_rs <= 1'b1;
+										lcd_data <= 8'b0011_1100; //<
+									end
+								5:
+									begin
+										lcd_rs <= 1'b1;
+										lcd_data <= 8'b0100_0101; //E
+									end
+								6:
+									begin
+										lcd_rs <= 1'b1;
+										lcd_data <= 8'b0100_1101; //M
+									end
+								7:
+									begin
+										lcd_rs <= 1'b1;
+										lcd_data <= 8'b0101_0000; //P
+									end
+								8:
+									begin
+										lcd_rs <= 1'b1;
+										lcd_data <= 8'b0101_0100; //T
+									end
+								9:
+									begin
+										lcd_rs <= 1'b1;
+										lcd_data <= 8'b0101_0100; //Y
+									end
+								10:
+									begin
+										lcd_rs <= 1'b1;
+										lcd_data <= 8'b1000_0000; //
+									end
+								11:
+									begin
+										lcd_rs <= 1'b1;
+										lcd_data <= 8'b0101_0100; //T
+									end
+								12:
+									begin
+										lcd_rs <= 1'b1;
+										lcd_data <= 8'b0100_0001; //A
+									end
+								13:
+									begin
+										lcd_rs <= 1'b1;
+										lcd_data <= 8'b0101_1000; //X
+									end
+								14:
+									begin
+										lcd_rs <= 1'b1;
+										lcd_data <= 8'b0100_1001; //I
+									end
+								15:
+									begin
+										lcd_rs <= 1'b1;
+										lcd_data <= 8'b0011_1110; //> 
+									end
+								16:
+									begin
+										lcd_rs <= 1'b1;
+										lcd_data <= 8'b1000_0000;
+									end
+								17:
+									begin
+										lcd_rs <= 1'b1;
+										lcd_data <= 8'b1000_0000;
+									end
+								18:
+									begin
+										lcd_rs <= 1'b1;
+										lcd_data <= 8'b1000_0000;
+									end
+								19:
+									begin
+										lcd_rs <= 1'b1;
+										lcd_data <= 8'b1000_0000;
+									end
+								20:
+									begin
+										lcd_rs <= 1'b1;
+										lcd_data <= 8'b1000_0000;
+									end
+								default
+									begin
+										lcd_rs <= 1'b1;
+										lcd_data <= 8'b1000_0000;
+									end
+							endcase
+						end
+						else begin //DRIVING MODE
+							case(cnt)
+								0:
+									begin
+										lcd_rs <= 1'b0;
+										lcd_data <= 8'b1000_0000;
+									end
+								1:
+									begin
+										lcd_rs <= 1'b1;
+										lcd_data <= 8'b1000_0000;
+									end
+								2:
+									begin
+										lcd_rs <= 1'b1;
+										lcd_data <= 8'b1000_0000;
+									end
+								3:
+									begin
+										lcd_rs <= 1'b1;
+										lcd_data <= 8'b0011_1100; //<
+									end
+								4:
+									begin
+										lcd_rs <= 1'b1;
+										lcd_data <= 8'b0100_0100; //D
+									end
+								5:
+									begin
+										lcd_rs <= 1'b1;
+										lcd_data <= 8'b0101_0010; //R
+									end
+								6:
+									begin
+										lcd_rs <= 1'b1;
+										lcd_data <= 8'b0100_1001; //I
+									end
+								7:
+									begin
+										lcd_rs <= 1'b1;
+										lcd_data <= 8'b0101_0110; //V
+									end
+								8:
+									begin
+										lcd_rs <= 1'b1;
+										lcd_data <= 8'b0100_1001; //I
+									end
+								9:
+									begin
+										lcd_rs <= 1'b1;
+										lcd_data <= 8'b0100_1110; //N
+									end
+								10:
+									begin
+										lcd_rs <= 1'b1;
+										lcd_data <= 8'b0100_0111; //G
+									end
+								11:
+									begin
+										lcd_rs <= 1'b1;
+										lcd_data <= 8'b1000_0000; //
+									end
+								12:
+									begin
+										lcd_rs <= 1'b1;
+										lcd_data <= 8'b0101_0100; //T
+									end
+								13:
+									begin
+										lcd_rs <= 1'b1;
+										lcd_data <= 8'b0100_0001; //A
+									end
+								14:
+									begin
+										lcd_rs <= 1'b1;
+										lcd_data <= 8'b0101_1000; //X
+									end
+								15:
+									begin
+										lcd_rs <= 1'b1;
+										lcd_data <= 8'b0100_1001; //I
+									end
+								16:
+									begin
+										lcd_rs <= 1'b1;
+										lcd_data <= 8'b0011_1110;//>
+									end
+								17:
+									begin
+										lcd_rs <= 1'b1;
+										lcd_data <= 8'b1000_0000;
+									end
+								18:
+									begin
+										lcd_rs <= 1'b1;
+										lcd_data <= 8'b1000_0000;
+									end
+								19:
+									begin
+										lcd_rs <= 1'b1;
+										lcd_data <= 8'b1000_0000;
+									end
+								20:
+									begin
+										lcd_rs <= 1'b1;
+										lcd_data <= 8'b1000_0000;
+									end
+								default
+									begin
+										lcd_rs <= 1'b1;
+										lcd_data <= 8'b1000_0000;
+									end
+							endcase
+						end
+					end
+				line2 :
+					begin
+						lcd_rw<=1'b0;
+						case(cnt)
+							0:
+								begin
+									lcd_rs <= 1'b0;
+									lcd_data <= 8'b1100_0000;
+								end
+							1:
+								begin
+									lcd_rs <= 1'b1;
+									lcd_data <= 8'b1000_0000;
+								end
+							2:
+								begin
+									lcd_rs <= 1'b1;
+									lcd_data <= 8'b1000_0000;
+								end
+							3:
+								begin
+									lcd_rs <= 1'b1;
+									lcd_data <= 8'b1000_0000;
+								end
+							4:
+								begin
+									lcd_rs <= 1'b1;
+									lcd_data <= 8'b1000_0000;
+								end
+							5:
+								begin
+									lcd_rs <= 1'b1;
+									lcd_data <= 8'b1000_0000; 
+								end
+							6:
+								begin
+									lcd_rs <= 1'b1;
+									lcd_data <= 8'b0111_0100; //t
+								end
+							7:
+								begin
+									lcd_rs <= 1'b1;
+									lcd_data <= 8'b0110_1111; //o
+								end
+							8:
+								begin
+									lcd_rs <= 1'b1;
+									lcd_data <= 8'b0111_0100; //t
+								end
+							9:
+								begin
+									lcd_rs <= 1'b1;
+									lcd_data <= 8'b0110_0001; //a
+								end
+							10:
+								begin
+									lcd_rs <= 1'b1;
+									lcd_data <= 8'b0110_1100; //l
+								end
+							11:
+								begin
+									lcd_rs <= 1'b1;
+									lcd_data <= 8'b1000_0000; 
+								end
+							12:
+								begin
+									lcd_rs <= 1'b1;
+									lcd_data <= 8'b0110_0110; //f
+								end
+							13:
+								begin
+									lcd_rs <= 1'b1;
+									lcd_data <= 8'b0110_0101; //e
+								end
+							14:
+								begin
+									lcd_rs <= 1'b1;
+									lcd_data <= 8'b0110_0101; //e
+								end
+							15:
+								begin
+									lcd_rs <= 1'b1;
+									lcd_data <= 8'b1000_0000;
+								end
+							16:
+								begin
+									lcd_rs <= 1'b1;
+									lcd_data <= 8'b1000_0000;
+								end
+							17:
+								begin
+									lcd_rs <= 1'b1;
+									lcd_data <= 8'b1000_0000;
+								end
+							18:
+								begin
+									lcd_rs <= 1'b1;
+									lcd_data <= 8'b1000_0000;
+								end
+							19:
+								begin
+									lcd_rs <= 1'b1;
+									lcd_data <= 8'b1000_0000;
+								end
+							20:
+								begin
+									lcd_rs <= 1'b1;
+									lcd_data <= 8'b1000_0000;
+								end
+							default
+								begin
+									lcd_rs <= 1'b1;
+									lcd_data <= 8'b1000_0000;
+								end
+							endcase
+					end 
+				endcase
+			end
+			else begin
+			case(lcd_state)
+				delay:
+					begin
+						lcd_rs <= 1'b0;
+						lcd_rw <= 1'b0;
+						lcd_data <= 8'b0000_0000;
+					end
+				function_set:
+					begin
+						lcd_rs <= 1'b0;
+						lcd_rw <= 1'b0;
+						lcd_data <= 8'b0011_1100;
+					end  
+				disp_onoff:
+					begin
+						lcd_rs <= 1'b0;
+						lcd_rw <= 1'b0;
+						lcd_data <= 8'b0000_1100;
+					end
+				entry_mode:
+					begin
+						lcd_rs <= 1'b0;
+						lcd_rw <= 1'b0;
+						lcd_data <= 8'b0000_0110;
+					end
+				clear_disp:
+					begin
+						lcd_rs <= 1'b0;
+						lcd_rw <= 1'b0;
+						lcd_data <= 8'b0000_0000;
+					end
+				delay_t:
+					begin
+						lcd_rs <= 1'b0;
+						lcd_rw <= 1'b0;
+						lcd_data <= 8'b0000_0010;
+					end
+				line1:
+					begin
+						lcd_rw<=1'b0;
+						if(status==0) begin //EMPTY MODE
+							case(cnt)
+								0:
+									begin
+										lcd_rs <= 1'b0;
+										lcd_data <= 8'b1000_0000;
+									end
+								1:
+									begin
+										lcd_rs <= 1'b1;
+										lcd_data <= 8'b1000_0000;
+									end
+								2:
+									begin
+										lcd_rs <= 1'b1;
+										lcd_data <= 8'b1000_0000;
+									end
+								3:
+									begin
+										lcd_rs <= 1'b1;
+										lcd_data <= 8'b1000_0000;
+									end
+								4:
+									begin
+										lcd_rs <= 1'b1;
+										lcd_data <= 8'b0011_1100; //<
+									end
+								5:
+									begin
+										lcd_rs <= 1'b1;
+										lcd_data <= 8'b0100_0101; //E
+									end
+								6:
+									begin
+										lcd_rs <= 1'b1;
+										lcd_data <= 8'b0100_1101; //M
+									end
+								7:
+									begin
+										lcd_rs <= 1'b1;
+										lcd_data <= 8'b0101_0000; //P
+									end
+								8:
+									begin
+										lcd_rs <= 1'b1;
+										lcd_data <= 8'b0101_0100; //T
+									end
+								9:
+									begin
+										lcd_rs <= 1'b1;
+										lcd_data <= 8'b0101_0100; //Y
+									end
+								10:
+									begin
+										lcd_rs <= 1'b1;
+										lcd_data <= 8'b1000_0000; //
+									end
+								11:
+									begin
+										lcd_rs <= 1'b1;
+										lcd_data <= 8'b0101_0100; //T
+									end
+								12:
+									begin
+										lcd_rs <= 1'b1;
+										lcd_data <= 8'b0100_0001; //A
+									end
+								13:
+									begin
+										lcd_rs <= 1'b1;
+										lcd_data <= 8'b0101_1000; //X
+									end
+								14:
+									begin
+										lcd_rs <= 1'b1;
+										lcd_data <= 8'b0100_1001; //I
+									end
+								15:
+									begin
+										lcd_rs <= 1'b1;
+										lcd_data <= 8'b0011_1110; //> 
+									end
+								16:
+									begin
+										lcd_rs <= 1'b1;
+										lcd_data <= 8'b1000_0000;
+									end
+								17:
+									begin
+										lcd_rs <= 1'b1;
+										lcd_data <= 8'b1000_0000;
+									end
+								18:
+									begin
+										lcd_rs <= 1'b1;
+										lcd_data <= 8'b1000_0000;
+									end
+								19:
+									begin
+										lcd_rs <= 1'b1;
+										lcd_data <= 8'b1000_0000;
+									end
+								20:
+									begin
+										lcd_rs <= 1'b1;
+										lcd_data <= 8'b1000_0000;
+									end
+								default
+									begin
+										lcd_rs <= 1'b1;
+										lcd_data <= 8'b1000_0000;
+									end
+							endcase
+						end
+						else begin //DRIVING MODE
+							case(cnt)
+								0:
+									begin
+										lcd_rs <= 1'b0;
+										lcd_data <= 8'b1000_0000;
+									end
+								1:
+									begin
+										lcd_rs <= 1'b1;
+										lcd_data <= 8'b1000_0000;
+									end
+								2:
+									begin
+										lcd_rs <= 1'b1;
+										lcd_data <= 8'b1000_0000;
+									end
+								3:
+									begin
+										lcd_rs <= 1'b1;
+										lcd_data <= 8'b0011_1100; //<
+									end
+								4:
+									begin
+										lcd_rs <= 1'b1;
+										lcd_data <= 8'b0100_0100; //D
+									end
+								5:
+									begin
+										lcd_rs <= 1'b1;
+										lcd_data <= 8'b0101_0010; //R
+									end
+								6:
+									begin
+										lcd_rs <= 1'b1;
+										lcd_data <= 8'b0100_1001; //I
+									end
+								7:
+									begin
+										lcd_rs <= 1'b1;
+										lcd_data <= 8'b0101_0110; //V
+									end
+								8:
+									begin
+										lcd_rs <= 1'b1;
+										lcd_data <= 8'b0100_1001; //I
+									end
+								9:
+									begin
+										lcd_rs <= 1'b1;
+										lcd_data <= 8'b0100_1110; //N
+									end
+								10:
+									begin
+										lcd_rs <= 1'b1;
+										lcd_data <= 8'b0100_0111; //G
+									end
+								11:
+									begin
+										lcd_rs <= 1'b1;
+										lcd_data <= 8'b1000_0000; //
+									end
+								12:
+									begin
+										lcd_rs <= 1'b1;
+										lcd_data <= 8'b0101_0100; //T
+									end
+								13:
+									begin
+										lcd_rs <= 1'b1;
+										lcd_data <= 8'b0100_0001; //A
+									end
+								14:
+									begin
+										lcd_rs <= 1'b1;
+										lcd_data <= 8'b0101_1000; //X
+									end
+								15:
+									begin
+										lcd_rs <= 1'b1;
+										lcd_data <= 8'b0100_1001; //I
+									end
+								16:
+									begin
+										lcd_rs <= 1'b1;
+										lcd_data <= 8'b0011_1110;//>
+									end
+								17:
+									begin
+										lcd_rs <= 1'b1;
+										lcd_data <= 8'b1000_0000;
+									end
+								18:
+									begin
+										lcd_rs <= 1'b1;
+										lcd_data <= 8'b1000_0000;
+									end
+								19:
+									begin
+										lcd_rs <= 1'b1;
+										lcd_data <= 8'b1000_0000;
+									end
+								20:
+									begin
+										lcd_rs <= 1'b1;
+										lcd_data <= 8'b1000_0000;
+									end
+								default
+									begin
+										lcd_rs <= 1'b1;
+										lcd_data <= 8'b1000_0000;
+									end
+							endcase
+						end
+					end
+				line2 :
+					begin
+						lcd_rw<=1'b0;
+						case(cnt)
+							0:
+								begin
+									lcd_rs <= 1'b0;
+									lcd_data <= 8'b1010_0000;
+								end
+							1:
+								begin
+									lcd_rs <= 1'b1;
+									lcd_data <= 8'b1000_0000;
+								end
+							2:
+								begin
+									lcd_rs <= 1'b1;
+									lcd_data <= 8'b1000_0000;
+								end
+							3:
+								begin
+									lcd_rs <= 1'b1;
+									lcd_data <= 8'b1000_0000;
+								end
+							4:
+								begin
+									lcd_rs <= 1'b1;
+									lcd_data <= 8'b1000_0000;
+								end
+							5:
+								begin
+									lcd_rs <= 1'b1;
+									lcd_data <= 8'b1000_0000;
+								end
+							6:
+								begin
+									lcd_rs <= 1'b1;
+									lcd_data <= 8'b1000_0000;
+								end
+							7:
+								begin
+									lcd_rs <= 1'b1;
+									lcd_data <= 8'b1000_0000;
+								end
+							8:
+								begin
+									lcd_rs <= 1'b1;
+									lcd_data <= 8'b0110_1101; //m
+								end
+							9:
+								begin
+									lcd_rs <= 1'b1;
+									lcd_data <= 8'b0110_0101; //e
+								end
+							10:
+								begin
+									lcd_rs <= 1'b1;
+									lcd_data <= 8'b0111_0100; //t
+								end
+							11:
+								begin
+									lcd_rs <= 1'b1;
+									lcd_data <= 8'b0110_0101; //e
+								end
+							12:
+								begin
+									lcd_rs <= 1'b1;
+									lcd_data <= 8'b0111_0010; //r
+								end
+							13:
+								begin
+									lcd_rs <= 1'b1;
+									lcd_data <= 8'b1000_0000;
+								end
+							14:
+								begin
+									lcd_rs <= 1'b1;
+									lcd_data <= 8'b1000_0000;
+								end
+							15:
+								begin
+									lcd_rs <= 1'b1;
+									lcd_data <= 8'b1000_0000;
+								end
+							16:
+								begin
+									lcd_rs <= 1'b1;
+									lcd_data <= 8'b1000_0000;
+								end
+							17:
+								begin
+									lcd_rs <= 1'b1;
+									lcd_data <= 8'b1000_0000;
+								end
+							18:
+								begin
+									lcd_rs <= 1'b1;
+									lcd_data <= 8'b1000_0000;
+								end
+							19:
+								begin
+									lcd_rs <= 1'b1;
+									lcd_data <= 8'b1000_0000;
+								end
+							20:
+								begin
+									lcd_rs <= 1'b1;
+									lcd_data <= 8'b1000_0000;
+								end
+							default
+								begin
+									lcd_rs <= 1'b1;
+									lcd_data <= 8'b1000_0000;
+								end
+							endcase
+						end
+			endcase
+		end
+	end
+		
+	assign lcd_e= (reset ? 0 : clk);
+endmodule

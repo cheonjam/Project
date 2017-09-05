@@ -1,0 +1,23 @@
+
+State Machine - |taximeter|lcd_text:comb_10|lcd_state
+Name lcd_state.clear_disp lcd_state.delay_t lcd_state.line2 lcd_state.line1 lcd_state.entry_mode lcd_state.disp_onoff lcd_state.function_set lcd_state.delay 
+lcd_state.delay 0 0 0 0 0 0 0 0 
+lcd_state.function_set 0 0 0 0 0 0 1 1 
+lcd_state.disp_onoff 0 0 0 0 0 1 0 1 
+lcd_state.entry_mode 0 0 0 0 1 0 0 1 
+lcd_state.line1 0 0 0 1 0 0 0 1 
+lcd_state.line2 0 0 1 0 0 0 0 1 
+lcd_state.delay_t 0 1 0 0 0 0 0 1 
+lcd_state.clear_disp 1 0 0 0 0 0 0 1 
+
+State Machine - |taximeter|meter_cal:comb_6|status
+Name status.00 status.10 status.01 
+status.00 0 0 0 
+status.01 1 0 1 
+status.10 1 1 0 
+
+State Machine - |taximeter|fee_cal:comb_5|status
+Name status.00 status.10 status.01 
+status.00 0 0 0 
+status.01 1 0 1 
+status.10 1 1 0 

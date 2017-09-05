@@ -1,0 +1,807 @@
+Classic Timing Analyzer report for taximeter
+Thu Dec 15 21:43:05 2016
+Quartus II Version 9.0 Build 235 06/17/2009 Service Pack 2 SJ Web Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Timing Analyzer Summary
+  3. Timing Analyzer Settings
+  4. Clock Settings Summary
+  5. Parallel Compilation
+  6. Clock Setup: 'clk'
+  7. Clock Hold: 'clk'
+  8. tsu
+  9. tco
+ 10. tpd
+ 11. th
+ 12. Timing Analyzer Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2009 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Timing Analyzer Summary                                                                                                                                                                                                          ;
++------------------------------+------------------------------------------+---------------+----------------------------------+-------------------------------+------------------------------+------------+----------+--------------+
+; Type                         ; Slack                                    ; Required Time ; Actual Time                      ; From                          ; To                           ; From Clock ; To Clock ; Failed Paths ;
++------------------------------+------------------------------------------+---------------+----------------------------------+-------------------------------+------------------------------+------------+----------+--------------+
+; Worst-case tsu               ; N/A                                      ; None          ; 16.300 ns                        ; bus                           ; bcd_seg:comb_7|segout[6]~269 ; --         ; clk      ; 0            ;
+; Worst-case tco               ; N/A                                      ; None          ; 34.400 ns                        ; dot_matrix:comb_8|cnt_data[1] ; dot_d[3]                     ; clk        ; --       ; 0            ;
+; Worst-case tpd               ; N/A                                      ; None          ; 30.500 ns                        ; reset                         ; dot_scan[7]                  ; --         ; --       ; 0            ;
+; Worst-case th                ; N/A                                      ; None          ; -1.700 ns                        ; normal                        ; meter_cal:comb_6|status.01   ; --         ; clk      ; 0            ;
+; Clock Setup: 'clk'           ; N/A                                      ; None          ; 31.55 MHz ( period = 31.700 ns ) ; fee_cal:comb_5|man[3]         ; bcd_seg:comb_7|segout[4]~267 ; clk        ; clk      ; 0            ;
+; Clock Hold: 'clk'            ; Not operational: Clock Skew > Data Delay ; None          ; N/A                              ; meter_cal:comb_6|status.10    ; fee_cal:comb_5|baek[0]       ; clk        ; clk      ; 30           ;
+; Total number of failed paths ;                                          ;               ;                                  ;                               ;                              ;            ;          ; 30           ;
++------------------------------+------------------------------------------+---------------+----------------------------------+-------------------------------+------------------------------+------------+----------+--------------+
+
+
++--------------------------------------------------------------------------------------------------------------------+
+; Timing Analyzer Settings                                                                                           ;
++---------------------------------------------------------------------+--------------------+------+----+-------------+
+; Option                                                              ; Setting            ; From ; To ; Entity Name ;
++---------------------------------------------------------------------+--------------------+------+----+-------------+
+; Device Name                                                         ; EP1K100QC208-3     ;      ;    ;             ;
+; Timing Models                                                       ; Final              ;      ;    ;             ;
+; Default hold multicycle                                             ; Same as Multicycle ;      ;    ;             ;
+; Cut paths between unrelated clock domains                           ; On                 ;      ;    ;             ;
+; Cut off read during write signal paths                              ; On                 ;      ;    ;             ;
+; Cut off feedback from I/O pins                                      ; On                 ;      ;    ;             ;
+; Report Combined Fast/Slow Timing                                    ; Off                ;      ;    ;             ;
+; Ignore Clock Settings                                               ; Off                ;      ;    ;             ;
+; Analyze latches as synchronous elements                             ; On                 ;      ;    ;             ;
+; Enable Recovery/Removal analysis                                    ; Off                ;      ;    ;             ;
+; Enable Clock Latency                                                ; Off                ;      ;    ;             ;
+; Use TimeQuest Timing Analyzer                                       ; Off                ;      ;    ;             ;
+; Minimum Core Junction Temperature                                   ; 0                  ;      ;    ;             ;
+; Maximum Core Junction Temperature                                   ; 85                 ;      ;    ;             ;
+; Number of source nodes to report per destination node               ; 10                 ;      ;    ;             ;
+; Number of destination nodes to report                               ; 10                 ;      ;    ;             ;
+; Number of paths to report                                           ; 200                ;      ;    ;             ;
+; Report Minimum Timing Checks                                        ; Off                ;      ;    ;             ;
+; Use Fast Timing Models                                              ; Off                ;      ;    ;             ;
+; Report IO Paths Separately                                          ; Off                ;      ;    ;             ;
+; Perform Multicorner Analysis                                        ; Off                ;      ;    ;             ;
+; Reports the worst-case path for each clock domain and analysis      ; Off                ;      ;    ;             ;
+; Removes common clock path pessimism (CCPP) during slack computation ; Off                ;      ;    ;             ;
+; Output I/O Timing Endpoint                                          ; Near End           ;      ;    ;             ;
++---------------------------------------------------------------------+--------------------+------+----+-------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Clock Settings Summary                                                                                                                                                             ;
++-----------------+--------------------+----------+------------------+---------------+--------------+----------+-----------------------+---------------------+--------+--------------+
+; Clock Node Name ; Clock Setting Name ; Type     ; Fmax Requirement ; Early Latency ; Late Latency ; Based on ; Multiply Base Fmax by ; Divide Base Fmax by ; Offset ; Phase offset ;
++-----------------+--------------------+----------+------------------+---------------+--------------+----------+-----------------------+---------------------+--------+--------------+
+; clk             ;                    ; User Pin ; None             ; 0.000 ns      ; 0.000 ns     ; --       ; N/A                   ; N/A                 ; N/A    ;              ;
++-----------------+--------------------+----------+------------------+---------------+--------------+----------+-----------------------+---------------------+--------+--------------+
+
+
+Parallel compilation was disabled, but you have multiple processors available. Enable parallel compilation to reduce compilation time.
++-------------------------------------+
+; Parallel Compilation                ;
++----------------------------+--------+
+; Processors                 ; Number ;
++----------------------------+--------+
+; Number detected on machine ; 4      ;
+; Maximum allowed            ; 1      ;
++----------------------------+--------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Clock Setup: 'clk'                                                                                                                                                                                                                                                  ;
++-----------------------------------------+-----------------------------------------------------+--------------------------+------------------------------+------------+----------+-----------------------------+---------------------------+-------------------------+
+; Slack                                   ; Actual fmax (period)                                ; From                     ; To                           ; From Clock ; To Clock ; Required Setup Relationship ; Required Longest P2P Time ; Actual Longest P2P Time ;
++-----------------------------------------+-----------------------------------------------------+--------------------------+------------------------------+------------+----------+-----------------------------+---------------------------+-------------------------+
+; N/A                                     ; 31.55 MHz ( period = 31.700 ns )                    ; fee_cal:comb_5|man[3]    ; bcd_seg:comb_7|segout[4]     ; clk        ; clk      ; None                        ; None                      ; 14.900 ns               ;
+; N/A                                     ; 31.55 MHz ( period = 31.700 ns )                    ; fee_cal:comb_5|man[3]    ; bcd_seg:comb_7|segout[4]~267 ; clk        ; clk      ; None                        ; None                      ; 14.900 ns               ;
+; N/A                                     ; 31.75 MHz ( period = 31.500 ns )                    ; fee_cal:comb_5|baek[2]   ; bcd_seg:comb_7|segout[4]     ; clk        ; clk      ; None                        ; None                      ; 14.600 ns               ;
+; N/A                                     ; 31.75 MHz ( period = 31.500 ns )                    ; fee_cal:comb_5|man[2]    ; bcd_seg:comb_7|segout[4]     ; clk        ; clk      ; None                        ; None                      ; 14.700 ns               ;
+; N/A                                     ; 31.75 MHz ( period = 31.500 ns )                    ; fee_cal:comb_5|baek[2]   ; bcd_seg:comb_7|segout[4]~267 ; clk        ; clk      ; None                        ; None                      ; 14.600 ns               ;
+; N/A                                     ; 31.75 MHz ( period = 31.500 ns )                    ; fee_cal:comb_5|man[2]    ; bcd_seg:comb_7|segout[4]~267 ; clk        ; clk      ; None                        ; None                      ; 14.700 ns               ;
+; N/A                                     ; 31.85 MHz ( period = 31.400 ns )                    ; fee_cal:comb_5|man[1]    ; bcd_seg:comb_7|segout[4]     ; clk        ; clk      ; None                        ; None                      ; 14.600 ns               ;
+; N/A                                     ; 31.85 MHz ( period = 31.400 ns )                    ; fee_cal:comb_5|man[1]    ; bcd_seg:comb_7|segout[4]~267 ; clk        ; clk      ; None                        ; None                      ; 14.600 ns               ;
+; N/A                                     ; 31.95 MHz ( period = 31.300 ns )                    ; fee_cal:comb_5|sibman[3] ; bcd_seg:comb_7|segout[0]     ; clk        ; clk      ; None                        ; None                      ; 14.700 ns               ;
+; N/A                                     ; 31.95 MHz ( period = 31.300 ns )                    ; fee_cal:comb_5|sibman[3] ; bcd_seg:comb_7|segout[0]~263 ; clk        ; clk      ; None                        ; None                      ; 14.700 ns               ;
+; N/A                                     ; 32.15 MHz ( period = 31.100 ns )                    ; fee_cal:comb_5|sibman[2] ; bcd_seg:comb_7|segout[0]     ; clk        ; clk      ; None                        ; None                      ; 14.500 ns               ;
+; N/A                                     ; 32.15 MHz ( period = 31.100 ns )                    ; fee_cal:comb_5|man[0]    ; bcd_seg:comb_7|segout[1]     ; clk        ; clk      ; None                        ; None                      ; 14.400 ns               ;
+; N/A                                     ; 32.15 MHz ( period = 31.100 ns )                    ; fee_cal:comb_5|man[0]    ; bcd_seg:comb_7|segout[2]     ; clk        ; clk      ; None                        ; None                      ; 14.400 ns               ;
+; N/A                                     ; 32.15 MHz ( period = 31.100 ns )                    ; fee_cal:comb_5|man[0]    ; bcd_seg:comb_7|segout[3]     ; clk        ; clk      ; None                        ; None                      ; 14.400 ns               ;
+; N/A                                     ; 32.15 MHz ( period = 31.100 ns )                    ; fee_cal:comb_5|man[0]    ; bcd_seg:comb_7|segout[5]     ; clk        ; clk      ; None                        ; None                      ; 14.400 ns               ;
+; N/A                                     ; 32.15 MHz ( period = 31.100 ns )                    ; fee_cal:comb_5|sibman[2] ; bcd_seg:comb_7|segout[0]~263 ; clk        ; clk      ; None                        ; None                      ; 14.500 ns               ;
+; N/A                                     ; 32.15 MHz ( period = 31.100 ns )                    ; fee_cal:comb_5|man[0]    ; bcd_seg:comb_7|segout[1]~264 ; clk        ; clk      ; None                        ; None                      ; 14.400 ns               ;
+; N/A                                     ; 32.15 MHz ( period = 31.100 ns )                    ; fee_cal:comb_5|man[0]    ; bcd_seg:comb_7|segout[2]~265 ; clk        ; clk      ; None                        ; None                      ; 14.400 ns               ;
+; N/A                                     ; 32.15 MHz ( period = 31.100 ns )                    ; fee_cal:comb_5|man[0]    ; bcd_seg:comb_7|segout[3]~266 ; clk        ; clk      ; None                        ; None                      ; 14.400 ns               ;
+; N/A                                     ; 32.15 MHz ( period = 31.100 ns )                    ; fee_cal:comb_5|man[0]    ; bcd_seg:comb_7|segout[5]~268 ; clk        ; clk      ; None                        ; None                      ; 14.400 ns               ;
+; N/A                                     ; 32.36 MHz ( period = 30.900 ns )                    ; fee_cal:comb_5|baek[2]   ; bcd_seg:comb_7|segout[6]     ; clk        ; clk      ; None                        ; None                      ; 14.000 ns               ;
+; N/A                                     ; 32.36 MHz ( period = 30.900 ns )                    ; fee_cal:comb_5|baek[2]   ; bcd_seg:comb_7|segout[6]~269 ; clk        ; clk      ; None                        ; None                      ; 14.000 ns               ;
+; N/A                                     ; 32.47 MHz ( period = 30.800 ns )                    ; fee_cal:comb_5|man[3]    ; bcd_seg:comb_7|segout[1]     ; clk        ; clk      ; None                        ; None                      ; 14.000 ns               ;
+; N/A                                     ; 32.47 MHz ( period = 30.800 ns )                    ; fee_cal:comb_5|man[3]    ; bcd_seg:comb_7|segout[2]     ; clk        ; clk      ; None                        ; None                      ; 14.000 ns               ;
+; N/A                                     ; 32.47 MHz ( period = 30.800 ns )                    ; fee_cal:comb_5|man[3]    ; bcd_seg:comb_7|segout[3]     ; clk        ; clk      ; None                        ; None                      ; 14.000 ns               ;
+; N/A                                     ; 32.47 MHz ( period = 30.800 ns )                    ; fee_cal:comb_5|man[3]    ; bcd_seg:comb_7|segout[5]     ; clk        ; clk      ; None                        ; None                      ; 14.000 ns               ;
+; N/A                                     ; 32.47 MHz ( period = 30.800 ns )                    ; fee_cal:comb_5|man[3]    ; bcd_seg:comb_7|segout[1]~264 ; clk        ; clk      ; None                        ; None                      ; 14.000 ns               ;
+; N/A                                     ; 32.47 MHz ( period = 30.800 ns )                    ; fee_cal:comb_5|man[3]    ; bcd_seg:comb_7|segout[2]~265 ; clk        ; clk      ; None                        ; None                      ; 14.000 ns               ;
+; N/A                                     ; 32.47 MHz ( period = 30.800 ns )                    ; fee_cal:comb_5|man[3]    ; bcd_seg:comb_7|segout[3]~266 ; clk        ; clk      ; None                        ; None                      ; 14.000 ns               ;
+; N/A                                     ; 32.47 MHz ( period = 30.800 ns )                    ; fee_cal:comb_5|man[3]    ; bcd_seg:comb_7|segout[5]~268 ; clk        ; clk      ; None                        ; None                      ; 14.000 ns               ;
+; N/A                                     ; 32.57 MHz ( period = 30.700 ns )                    ; fee_cal:comb_5|baek[3]   ; bcd_seg:comb_7|segout[4]     ; clk        ; clk      ; None                        ; None                      ; 13.900 ns               ;
+; N/A                                     ; 32.57 MHz ( period = 30.700 ns )                    ; fee_cal:comb_5|baek[3]   ; bcd_seg:comb_7|segout[4]~267 ; clk        ; clk      ; None                        ; None                      ; 13.900 ns               ;
+; N/A                                     ; 32.68 MHz ( period = 30.600 ns )                    ; fee_cal:comb_5|baek[3]   ; bcd_seg:comb_7|segout[1]     ; clk        ; clk      ; None                        ; None                      ; 13.800 ns               ;
+; N/A                                     ; 32.68 MHz ( period = 30.600 ns )                    ; fee_cal:comb_5|man[2]    ; bcd_seg:comb_7|segout[1]     ; clk        ; clk      ; None                        ; None                      ; 13.800 ns               ;
+; N/A                                     ; 32.68 MHz ( period = 30.600 ns )                    ; fee_cal:comb_5|baek[3]   ; bcd_seg:comb_7|segout[2]     ; clk        ; clk      ; None                        ; None                      ; 13.800 ns               ;
+; N/A                                     ; 32.68 MHz ( period = 30.600 ns )                    ; fee_cal:comb_5|man[2]    ; bcd_seg:comb_7|segout[2]     ; clk        ; clk      ; None                        ; None                      ; 13.800 ns               ;
+; N/A                                     ; 32.68 MHz ( period = 30.600 ns )                    ; fee_cal:comb_5|baek[3]   ; bcd_seg:comb_7|segout[3]     ; clk        ; clk      ; None                        ; None                      ; 13.800 ns               ;
+; N/A                                     ; 32.68 MHz ( period = 30.600 ns )                    ; fee_cal:comb_5|man[2]    ; bcd_seg:comb_7|segout[3]     ; clk        ; clk      ; None                        ; None                      ; 13.800 ns               ;
+; N/A                                     ; 32.68 MHz ( period = 30.600 ns )                    ; fee_cal:comb_5|baek[3]   ; bcd_seg:comb_7|segout[5]     ; clk        ; clk      ; None                        ; None                      ; 13.800 ns               ;
+; N/A                                     ; 32.68 MHz ( period = 30.600 ns )                    ; fee_cal:comb_5|man[2]    ; bcd_seg:comb_7|segout[5]     ; clk        ; clk      ; None                        ; None                      ; 13.800 ns               ;
+; N/A                                     ; 32.68 MHz ( period = 30.600 ns )                    ; fee_cal:comb_5|baek[3]   ; bcd_seg:comb_7|segout[1]~264 ; clk        ; clk      ; None                        ; None                      ; 13.800 ns               ;
+; N/A                                     ; 32.68 MHz ( period = 30.600 ns )                    ; fee_cal:comb_5|man[2]    ; bcd_seg:comb_7|segout[1]~264 ; clk        ; clk      ; None                        ; None                      ; 13.800 ns               ;
+; N/A                                     ; 32.68 MHz ( period = 30.600 ns )                    ; fee_cal:comb_5|baek[3]   ; bcd_seg:comb_7|segout[2]~265 ; clk        ; clk      ; None                        ; None                      ; 13.800 ns               ;
+; N/A                                     ; 32.68 MHz ( period = 30.600 ns )                    ; fee_cal:comb_5|man[2]    ; bcd_seg:comb_7|segout[2]~265 ; clk        ; clk      ; None                        ; None                      ; 13.800 ns               ;
+; N/A                                     ; 32.68 MHz ( period = 30.600 ns )                    ; fee_cal:comb_5|baek[3]   ; bcd_seg:comb_7|segout[3]~266 ; clk        ; clk      ; None                        ; None                      ; 13.800 ns               ;
+; N/A                                     ; 32.68 MHz ( period = 30.600 ns )                    ; fee_cal:comb_5|man[2]    ; bcd_seg:comb_7|segout[3]~266 ; clk        ; clk      ; None                        ; None                      ; 13.800 ns               ;
+; N/A                                     ; 32.68 MHz ( period = 30.600 ns )                    ; fee_cal:comb_5|baek[3]   ; bcd_seg:comb_7|segout[5]~268 ; clk        ; clk      ; None                        ; None                      ; 13.800 ns               ;
+; N/A                                     ; 32.68 MHz ( period = 30.600 ns )                    ; fee_cal:comb_5|man[2]    ; bcd_seg:comb_7|segout[5]~268 ; clk        ; clk      ; None                        ; None                      ; 13.800 ns               ;
+; N/A                                     ; 32.79 MHz ( period = 30.500 ns )                    ; fee_cal:comb_5|baek[2]   ; bcd_seg:comb_7|segout[0]     ; clk        ; clk      ; None                        ; None                      ; 13.600 ns               ;
+; N/A                                     ; 32.79 MHz ( period = 30.500 ns )                    ; fee_cal:comb_5|baek[2]   ; bcd_seg:comb_7|segout[1]     ; clk        ; clk      ; None                        ; None                      ; 13.600 ns               ;
+; N/A                                     ; 32.79 MHz ( period = 30.500 ns )                    ; fee_cal:comb_5|man[1]    ; bcd_seg:comb_7|segout[1]     ; clk        ; clk      ; None                        ; None                      ; 13.700 ns               ;
+; N/A                                     ; 32.79 MHz ( period = 30.500 ns )                    ; fee_cal:comb_5|baek[2]   ; bcd_seg:comb_7|segout[2]     ; clk        ; clk      ; None                        ; None                      ; 13.600 ns               ;
+; N/A                                     ; 32.79 MHz ( period = 30.500 ns )                    ; fee_cal:comb_5|man[1]    ; bcd_seg:comb_7|segout[2]     ; clk        ; clk      ; None                        ; None                      ; 13.700 ns               ;
+; N/A                                     ; 32.79 MHz ( period = 30.500 ns )                    ; fee_cal:comb_5|baek[2]   ; bcd_seg:comb_7|segout[3]     ; clk        ; clk      ; None                        ; None                      ; 13.600 ns               ;
+; N/A                                     ; 32.79 MHz ( period = 30.500 ns )                    ; fee_cal:comb_5|man[1]    ; bcd_seg:comb_7|segout[3]     ; clk        ; clk      ; None                        ; None                      ; 13.700 ns               ;
+; N/A                                     ; 32.79 MHz ( period = 30.500 ns )                    ; fee_cal:comb_5|baek[2]   ; bcd_seg:comb_7|segout[5]     ; clk        ; clk      ; None                        ; None                      ; 13.600 ns               ;
+; N/A                                     ; 32.79 MHz ( period = 30.500 ns )                    ; fee_cal:comb_5|man[1]    ; bcd_seg:comb_7|segout[5]     ; clk        ; clk      ; None                        ; None                      ; 13.700 ns               ;
+; N/A                                     ; 32.79 MHz ( period = 30.500 ns )                    ; fee_cal:comb_5|baek[2]   ; bcd_seg:comb_7|segout[0]~263 ; clk        ; clk      ; None                        ; None                      ; 13.600 ns               ;
+; N/A                                     ; 32.79 MHz ( period = 30.500 ns )                    ; fee_cal:comb_5|baek[2]   ; bcd_seg:comb_7|segout[1]~264 ; clk        ; clk      ; None                        ; None                      ; 13.600 ns               ;
+; N/A                                     ; 32.79 MHz ( period = 30.500 ns )                    ; fee_cal:comb_5|man[1]    ; bcd_seg:comb_7|segout[1]~264 ; clk        ; clk      ; None                        ; None                      ; 13.700 ns               ;
+; N/A                                     ; 32.79 MHz ( period = 30.500 ns )                    ; fee_cal:comb_5|baek[2]   ; bcd_seg:comb_7|segout[2]~265 ; clk        ; clk      ; None                        ; None                      ; 13.600 ns               ;
+; N/A                                     ; 32.79 MHz ( period = 30.500 ns )                    ; fee_cal:comb_5|man[1]    ; bcd_seg:comb_7|segout[2]~265 ; clk        ; clk      ; None                        ; None                      ; 13.700 ns               ;
+; N/A                                     ; 32.79 MHz ( period = 30.500 ns )                    ; fee_cal:comb_5|baek[2]   ; bcd_seg:comb_7|segout[3]~266 ; clk        ; clk      ; None                        ; None                      ; 13.600 ns               ;
+; N/A                                     ; 32.79 MHz ( period = 30.500 ns )                    ; fee_cal:comb_5|man[1]    ; bcd_seg:comb_7|segout[3]~266 ; clk        ; clk      ; None                        ; None                      ; 13.700 ns               ;
+; N/A                                     ; 32.79 MHz ( period = 30.500 ns )                    ; fee_cal:comb_5|baek[2]   ; bcd_seg:comb_7|segout[5]~268 ; clk        ; clk      ; None                        ; None                      ; 13.600 ns               ;
+; N/A                                     ; 32.79 MHz ( period = 30.500 ns )                    ; fee_cal:comb_5|man[1]    ; bcd_seg:comb_7|segout[5]~268 ; clk        ; clk      ; None                        ; None                      ; 13.700 ns               ;
+; N/A                                     ; 32.89 MHz ( period = 30.400 ns )                    ; fee_cal:comb_5|sibman[3] ; bcd_seg:comb_7|segout[4]     ; clk        ; clk      ; None                        ; None                      ; 13.800 ns               ;
+; N/A                                     ; 32.89 MHz ( period = 30.400 ns )                    ; fee_cal:comb_5|baek[1]   ; bcd_seg:comb_7|segout[4]     ; clk        ; clk      ; None                        ; None                      ; 13.600 ns               ;
+; N/A                                     ; 32.89 MHz ( period = 30.400 ns )                    ; fee_cal:comb_5|sibman[3] ; bcd_seg:comb_7|segout[5]     ; clk        ; clk      ; None                        ; None                      ; 13.800 ns               ;
+; N/A                                     ; 32.89 MHz ( period = 30.400 ns )                    ; fee_cal:comb_5|sibman[3] ; bcd_seg:comb_7|segout[4]~267 ; clk        ; clk      ; None                        ; None                      ; 13.800 ns               ;
+; N/A                                     ; 32.89 MHz ( period = 30.400 ns )                    ; fee_cal:comb_5|baek[1]   ; bcd_seg:comb_7|segout[4]~267 ; clk        ; clk      ; None                        ; None                      ; 13.600 ns               ;
+; N/A                                     ; 32.89 MHz ( period = 30.400 ns )                    ; fee_cal:comb_5|sibman[3] ; bcd_seg:comb_7|segout[5]~268 ; clk        ; clk      ; None                        ; None                      ; 13.800 ns               ;
+; N/A                                     ; 33.00 MHz ( period = 30.300 ns )                    ; fee_cal:comb_5|baek[1]   ; bcd_seg:comb_7|segout[1]     ; clk        ; clk      ; None                        ; None                      ; 13.500 ns               ;
+; N/A                                     ; 33.00 MHz ( period = 30.300 ns )                    ; fee_cal:comb_5|baek[1]   ; bcd_seg:comb_7|segout[2]     ; clk        ; clk      ; None                        ; None                      ; 13.500 ns               ;
+; N/A                                     ; 33.00 MHz ( period = 30.300 ns )                    ; fee_cal:comb_5|baek[1]   ; bcd_seg:comb_7|segout[3]     ; clk        ; clk      ; None                        ; None                      ; 13.500 ns               ;
+; N/A                                     ; 33.00 MHz ( period = 30.300 ns )                    ; fee_cal:comb_5|baek[1]   ; bcd_seg:comb_7|segout[5]     ; clk        ; clk      ; None                        ; None                      ; 13.500 ns               ;
+; N/A                                     ; 33.00 MHz ( period = 30.300 ns )                    ; fee_cal:comb_5|baek[1]   ; bcd_seg:comb_7|segout[1]~264 ; clk        ; clk      ; None                        ; None                      ; 13.500 ns               ;
+; N/A                                     ; 33.00 MHz ( period = 30.300 ns )                    ; fee_cal:comb_5|baek[1]   ; bcd_seg:comb_7|segout[2]~265 ; clk        ; clk      ; None                        ; None                      ; 13.500 ns               ;
+; N/A                                     ; 33.00 MHz ( period = 30.300 ns )                    ; fee_cal:comb_5|baek[1]   ; bcd_seg:comb_7|segout[3]~266 ; clk        ; clk      ; None                        ; None                      ; 13.500 ns               ;
+; N/A                                     ; 33.00 MHz ( period = 30.300 ns )                    ; fee_cal:comb_5|baek[1]   ; bcd_seg:comb_7|segout[5]~268 ; clk        ; clk      ; None                        ; None                      ; 13.500 ns               ;
+; N/A                                     ; 33.11 MHz ( period = 30.200 ns )                    ; fee_cal:comb_5|man[0]    ; bcd_seg:comb_7|segout[0]     ; clk        ; clk      ; None                        ; None                      ; 13.500 ns               ;
+; N/A                                     ; 33.11 MHz ( period = 30.200 ns )                    ; fee_cal:comb_5|sibman[2] ; bcd_seg:comb_7|segout[4]     ; clk        ; clk      ; None                        ; None                      ; 13.600 ns               ;
+; N/A                                     ; 33.11 MHz ( period = 30.200 ns )                    ; fee_cal:comb_5|baek[0]   ; bcd_seg:comb_7|segout[4]     ; clk        ; clk      ; None                        ; None                      ; 13.400 ns               ;
+; N/A                                     ; 33.11 MHz ( period = 30.200 ns )                    ; fee_cal:comb_5|man[0]    ; bcd_seg:comb_7|segout[4]     ; clk        ; clk      ; None                        ; None                      ; 13.500 ns               ;
+; N/A                                     ; 33.11 MHz ( period = 30.200 ns )                    ; fee_cal:comb_5|sibman[2] ; bcd_seg:comb_7|segout[5]     ; clk        ; clk      ; None                        ; None                      ; 13.600 ns               ;
+; N/A                                     ; 33.11 MHz ( period = 30.200 ns )                    ; fee_cal:comb_5|man[0]    ; bcd_seg:comb_7|segout[0]~263 ; clk        ; clk      ; None                        ; None                      ; 13.500 ns               ;
+; N/A                                     ; 33.11 MHz ( period = 30.200 ns )                    ; fee_cal:comb_5|sibman[2] ; bcd_seg:comb_7|segout[4]~267 ; clk        ; clk      ; None                        ; None                      ; 13.600 ns               ;
+; N/A                                     ; 33.11 MHz ( period = 30.200 ns )                    ; fee_cal:comb_5|baek[0]   ; bcd_seg:comb_7|segout[4]~267 ; clk        ; clk      ; None                        ; None                      ; 13.400 ns               ;
+; N/A                                     ; 33.11 MHz ( period = 30.200 ns )                    ; fee_cal:comb_5|man[0]    ; bcd_seg:comb_7|segout[4]~267 ; clk        ; clk      ; None                        ; None                      ; 13.500 ns               ;
+; N/A                                     ; 33.11 MHz ( period = 30.200 ns )                    ; fee_cal:comb_5|sibman[2] ; bcd_seg:comb_7|segout[5]~268 ; clk        ; clk      ; None                        ; None                      ; 13.600 ns               ;
+; N/A                                     ; 33.22 MHz ( period = 30.100 ns )                    ; fee_cal:comb_5|sibman[1] ; bcd_seg:comb_7|segout[0]     ; clk        ; clk      ; None                        ; None                      ; 13.500 ns               ;
+; N/A                                     ; 33.22 MHz ( period = 30.100 ns )                    ; fee_cal:comb_5|sibman[1] ; bcd_seg:comb_7|segout[1]     ; clk        ; clk      ; None                        ; None                      ; 13.500 ns               ;
+; N/A                                     ; 33.22 MHz ( period = 30.100 ns )                    ; fee_cal:comb_5|baek[0]   ; bcd_seg:comb_7|segout[1]     ; clk        ; clk      ; None                        ; None                      ; 13.300 ns               ;
+; N/A                                     ; 33.22 MHz ( period = 30.100 ns )                    ; fee_cal:comb_5|sibman[1] ; bcd_seg:comb_7|segout[2]     ; clk        ; clk      ; None                        ; None                      ; 13.500 ns               ;
+; N/A                                     ; 33.22 MHz ( period = 30.100 ns )                    ; fee_cal:comb_5|baek[0]   ; bcd_seg:comb_7|segout[2]     ; clk        ; clk      ; None                        ; None                      ; 13.300 ns               ;
+; N/A                                     ; 33.22 MHz ( period = 30.100 ns )                    ; fee_cal:comb_5|sibman[1] ; bcd_seg:comb_7|segout[3]     ; clk        ; clk      ; None                        ; None                      ; 13.500 ns               ;
+; N/A                                     ; 33.22 MHz ( period = 30.100 ns )                    ; fee_cal:comb_5|baek[0]   ; bcd_seg:comb_7|segout[3]     ; clk        ; clk      ; None                        ; None                      ; 13.300 ns               ;
+; N/A                                     ; 33.22 MHz ( period = 30.100 ns )                    ; fee_cal:comb_5|baek[0]   ; bcd_seg:comb_7|segout[5]     ; clk        ; clk      ; None                        ; None                      ; 13.300 ns               ;
+; N/A                                     ; 33.22 MHz ( period = 30.100 ns )                    ; fee_cal:comb_5|baek[3]   ; bcd_seg:comb_7|segout[6]     ; clk        ; clk      ; None                        ; None                      ; 13.300 ns               ;
+; N/A                                     ; 33.22 MHz ( period = 30.100 ns )                    ; fee_cal:comb_5|man[3]    ; bcd_seg:comb_7|segout[6]     ; clk        ; clk      ; None                        ; None                      ; 13.300 ns               ;
+; N/A                                     ; 33.22 MHz ( period = 30.100 ns )                    ; fee_cal:comb_5|sibman[1] ; bcd_seg:comb_7|segout[0]~263 ; clk        ; clk      ; None                        ; None                      ; 13.500 ns               ;
+; N/A                                     ; 33.22 MHz ( period = 30.100 ns )                    ; fee_cal:comb_5|sibman[1] ; bcd_seg:comb_7|segout[1]~264 ; clk        ; clk      ; None                        ; None                      ; 13.500 ns               ;
+; N/A                                     ; 33.22 MHz ( period = 30.100 ns )                    ; fee_cal:comb_5|baek[0]   ; bcd_seg:comb_7|segout[1]~264 ; clk        ; clk      ; None                        ; None                      ; 13.300 ns               ;
+; N/A                                     ; 33.22 MHz ( period = 30.100 ns )                    ; fee_cal:comb_5|sibman[1] ; bcd_seg:comb_7|segout[2]~265 ; clk        ; clk      ; None                        ; None                      ; 13.500 ns               ;
+; N/A                                     ; 33.22 MHz ( period = 30.100 ns )                    ; fee_cal:comb_5|baek[0]   ; bcd_seg:comb_7|segout[2]~265 ; clk        ; clk      ; None                        ; None                      ; 13.300 ns               ;
+; N/A                                     ; 33.22 MHz ( period = 30.100 ns )                    ; fee_cal:comb_5|sibman[1] ; bcd_seg:comb_7|segout[3]~266 ; clk        ; clk      ; None                        ; None                      ; 13.500 ns               ;
+; N/A                                     ; 33.22 MHz ( period = 30.100 ns )                    ; fee_cal:comb_5|baek[0]   ; bcd_seg:comb_7|segout[3]~266 ; clk        ; clk      ; None                        ; None                      ; 13.300 ns               ;
+; N/A                                     ; 33.22 MHz ( period = 30.100 ns )                    ; fee_cal:comb_5|baek[0]   ; bcd_seg:comb_7|segout[5]~268 ; clk        ; clk      ; None                        ; None                      ; 13.300 ns               ;
+; N/A                                     ; 33.22 MHz ( period = 30.100 ns )                    ; fee_cal:comb_5|baek[3]   ; bcd_seg:comb_7|segout[6]~269 ; clk        ; clk      ; None                        ; None                      ; 13.300 ns               ;
+; N/A                                     ; 33.22 MHz ( period = 30.100 ns )                    ; fee_cal:comb_5|man[3]    ; bcd_seg:comb_7|segout[6]~269 ; clk        ; clk      ; None                        ; None                      ; 13.300 ns               ;
+; N/A                                     ; 33.44 MHz ( period = 29.900 ns )                    ; fee_cal:comb_5|sibman[0] ; bcd_seg:comb_7|segout[0]     ; clk        ; clk      ; None                        ; None                      ; 13.300 ns               ;
+; N/A                                     ; 33.44 MHz ( period = 29.900 ns )                    ; fee_cal:comb_5|man[3]    ; bcd_seg:comb_7|segout[0]     ; clk        ; clk      ; None                        ; None                      ; 13.100 ns               ;
+; N/A                                     ; 33.44 MHz ( period = 29.900 ns )                    ; fee_cal:comb_5|sibman[0] ; bcd_seg:comb_7|segout[1]     ; clk        ; clk      ; None                        ; None                      ; 13.300 ns               ;
+; N/A                                     ; 33.44 MHz ( period = 29.900 ns )                    ; fee_cal:comb_5|sibman[0] ; bcd_seg:comb_7|segout[2]     ; clk        ; clk      ; None                        ; None                      ; 13.300 ns               ;
+; N/A                                     ; 33.44 MHz ( period = 29.900 ns )                    ; fee_cal:comb_5|sibman[0] ; bcd_seg:comb_7|segout[3]     ; clk        ; clk      ; None                        ; None                      ; 13.300 ns               ;
+; N/A                                     ; 33.44 MHz ( period = 29.900 ns )                    ; fee_cal:comb_5|man[2]    ; bcd_seg:comb_7|segout[6]     ; clk        ; clk      ; None                        ; None                      ; 13.100 ns               ;
+; N/A                                     ; 33.44 MHz ( period = 29.900 ns )                    ; fee_cal:comb_5|sibman[0] ; bcd_seg:comb_7|segout[0]~263 ; clk        ; clk      ; None                        ; None                      ; 13.300 ns               ;
+; N/A                                     ; 33.44 MHz ( period = 29.900 ns )                    ; fee_cal:comb_5|man[3]    ; bcd_seg:comb_7|segout[0]~263 ; clk        ; clk      ; None                        ; None                      ; 13.100 ns               ;
+; N/A                                     ; 33.44 MHz ( period = 29.900 ns )                    ; fee_cal:comb_5|sibman[0] ; bcd_seg:comb_7|segout[1]~264 ; clk        ; clk      ; None                        ; None                      ; 13.300 ns               ;
+; N/A                                     ; 33.44 MHz ( period = 29.900 ns )                    ; fee_cal:comb_5|sibman[0] ; bcd_seg:comb_7|segout[2]~265 ; clk        ; clk      ; None                        ; None                      ; 13.300 ns               ;
+; N/A                                     ; 33.44 MHz ( period = 29.900 ns )                    ; fee_cal:comb_5|sibman[0] ; bcd_seg:comb_7|segout[3]~266 ; clk        ; clk      ; None                        ; None                      ; 13.300 ns               ;
+; N/A                                     ; 33.44 MHz ( period = 29.900 ns )                    ; fee_cal:comb_5|man[2]    ; bcd_seg:comb_7|segout[6]~269 ; clk        ; clk      ; None                        ; None                      ; 13.100 ns               ;
+; N/A                                     ; 33.56 MHz ( period = 29.800 ns )                    ; fee_cal:comb_5|baek[1]   ; bcd_seg:comb_7|segout[6]     ; clk        ; clk      ; None                        ; None                      ; 13.000 ns               ;
+; N/A                                     ; 33.56 MHz ( period = 29.800 ns )                    ; fee_cal:comb_5|man[1]    ; bcd_seg:comb_7|segout[6]     ; clk        ; clk      ; None                        ; None                      ; 13.000 ns               ;
+; N/A                                     ; 33.56 MHz ( period = 29.800 ns )                    ; fee_cal:comb_5|baek[1]   ; bcd_seg:comb_7|segout[6]~269 ; clk        ; clk      ; None                        ; None                      ; 13.000 ns               ;
+; N/A                                     ; 33.56 MHz ( period = 29.800 ns )                    ; fee_cal:comb_5|man[1]    ; bcd_seg:comb_7|segout[6]~269 ; clk        ; clk      ; None                        ; None                      ; 13.000 ns               ;
+; N/A                                     ; 33.67 MHz ( period = 29.700 ns )                    ; fee_cal:comb_5|baek[3]   ; bcd_seg:comb_7|segout[0]     ; clk        ; clk      ; None                        ; None                      ; 12.900 ns               ;
+; N/A                                     ; 33.67 MHz ( period = 29.700 ns )                    ; fee_cal:comb_5|man[2]    ; bcd_seg:comb_7|segout[0]     ; clk        ; clk      ; None                        ; None                      ; 12.900 ns               ;
+; N/A                                     ; 33.67 MHz ( period = 29.700 ns )                    ; fee_cal:comb_5|baek[3]   ; bcd_seg:comb_7|segout[0]~263 ; clk        ; clk      ; None                        ; None                      ; 12.900 ns               ;
+; N/A                                     ; 33.67 MHz ( period = 29.700 ns )                    ; fee_cal:comb_5|man[2]    ; bcd_seg:comb_7|segout[0]~263 ; clk        ; clk      ; None                        ; None                      ; 12.900 ns               ;
+; N/A                                     ; 33.78 MHz ( period = 29.600 ns )                    ; fee_cal:comb_5|man[1]    ; bcd_seg:comb_7|segout[0]     ; clk        ; clk      ; None                        ; None                      ; 12.800 ns               ;
+; N/A                                     ; 33.78 MHz ( period = 29.600 ns )                    ; fee_cal:comb_5|sibman[1] ; bcd_seg:comb_7|segout[6]     ; clk        ; clk      ; None                        ; None                      ; 13.000 ns               ;
+; N/A                                     ; 33.78 MHz ( period = 29.600 ns )                    ; fee_cal:comb_5|baek[0]   ; bcd_seg:comb_7|segout[6]     ; clk        ; clk      ; None                        ; None                      ; 12.800 ns               ;
+; N/A                                     ; 33.78 MHz ( period = 29.600 ns )                    ; fee_cal:comb_5|man[1]    ; bcd_seg:comb_7|segout[0]~263 ; clk        ; clk      ; None                        ; None                      ; 12.800 ns               ;
+; N/A                                     ; 33.78 MHz ( period = 29.600 ns )                    ; fee_cal:comb_5|sibman[1] ; bcd_seg:comb_7|segout[6]~269 ; clk        ; clk      ; None                        ; None                      ; 13.000 ns               ;
+; N/A                                     ; 33.78 MHz ( period = 29.600 ns )                    ; fee_cal:comb_5|baek[0]   ; bcd_seg:comb_7|segout[6]~269 ; clk        ; clk      ; None                        ; None                      ; 12.800 ns               ;
+; N/A                                     ; 33.90 MHz ( period = 29.500 ns )                    ; fee_cal:comb_5|sibman[3] ; bcd_seg:comb_7|segout[1]     ; clk        ; clk      ; None                        ; None                      ; 12.900 ns               ;
+; N/A                                     ; 33.90 MHz ( period = 29.500 ns )                    ; fee_cal:comb_5|sibman[3] ; bcd_seg:comb_7|segout[2]     ; clk        ; clk      ; None                        ; None                      ; 12.900 ns               ;
+; N/A                                     ; 33.90 MHz ( period = 29.500 ns )                    ; fee_cal:comb_5|sibman[3] ; bcd_seg:comb_7|segout[3]     ; clk        ; clk      ; None                        ; None                      ; 12.900 ns               ;
+; N/A                                     ; 33.90 MHz ( period = 29.500 ns )                    ; fee_cal:comb_5|sibman[3] ; bcd_seg:comb_7|segout[1]~264 ; clk        ; clk      ; None                        ; None                      ; 12.900 ns               ;
+; N/A                                     ; 33.90 MHz ( period = 29.500 ns )                    ; fee_cal:comb_5|sibman[3] ; bcd_seg:comb_7|segout[2]~265 ; clk        ; clk      ; None                        ; None                      ; 12.900 ns               ;
+; N/A                                     ; 33.90 MHz ( period = 29.500 ns )                    ; fee_cal:comb_5|sibman[3] ; bcd_seg:comb_7|segout[3]~266 ; clk        ; clk      ; None                        ; None                      ; 12.900 ns               ;
+; N/A                                     ; 34.01 MHz ( period = 29.400 ns )                    ; fee_cal:comb_5|baek[1]   ; bcd_seg:comb_7|segout[0]     ; clk        ; clk      ; None                        ; None                      ; 12.600 ns               ;
+; N/A                                     ; 34.01 MHz ( period = 29.400 ns )                    ; fee_cal:comb_5|sibman[0] ; bcd_seg:comb_7|segout[6]     ; clk        ; clk      ; None                        ; None                      ; 12.800 ns               ;
+; N/A                                     ; 34.01 MHz ( period = 29.400 ns )                    ; fee_cal:comb_5|baek[1]   ; bcd_seg:comb_7|segout[0]~263 ; clk        ; clk      ; None                        ; None                      ; 12.600 ns               ;
+; N/A                                     ; 34.01 MHz ( period = 29.400 ns )                    ; fee_cal:comb_5|sibman[0] ; bcd_seg:comb_7|segout[6]~269 ; clk        ; clk      ; None                        ; None                      ; 12.800 ns               ;
+; N/A                                     ; 34.13 MHz ( period = 29.300 ns )                    ; fee_cal:comb_5|sibman[2] ; bcd_seg:comb_7|segout[1]     ; clk        ; clk      ; None                        ; None                      ; 12.700 ns               ;
+; N/A                                     ; 34.13 MHz ( period = 29.300 ns )                    ; fee_cal:comb_5|sibman[2] ; bcd_seg:comb_7|segout[2]     ; clk        ; clk      ; None                        ; None                      ; 12.700 ns               ;
+; N/A                                     ; 34.13 MHz ( period = 29.300 ns )                    ; fee_cal:comb_5|sibman[2] ; bcd_seg:comb_7|segout[3]     ; clk        ; clk      ; None                        ; None                      ; 12.700 ns               ;
+; N/A                                     ; 34.13 MHz ( period = 29.300 ns )                    ; fee_cal:comb_5|sibman[2] ; bcd_seg:comb_7|segout[1]~264 ; clk        ; clk      ; None                        ; None                      ; 12.700 ns               ;
+; N/A                                     ; 34.13 MHz ( period = 29.300 ns )                    ; fee_cal:comb_5|sibman[2] ; bcd_seg:comb_7|segout[2]~265 ; clk        ; clk      ; None                        ; None                      ; 12.700 ns               ;
+; N/A                                     ; 34.13 MHz ( period = 29.300 ns )                    ; fee_cal:comb_5|sibman[2] ; bcd_seg:comb_7|segout[3]~266 ; clk        ; clk      ; None                        ; None                      ; 12.700 ns               ;
+; N/A                                     ; 34.25 MHz ( period = 29.200 ns )                    ; fee_cal:comb_5|cheon[3]  ; bcd_seg:comb_7|segout[0]     ; clk        ; clk      ; None                        ; None                      ; 14.300 ns               ;
+; N/A                                     ; 34.25 MHz ( period = 29.200 ns )                    ; fee_cal:comb_5|baek[0]   ; bcd_seg:comb_7|segout[0]     ; clk        ; clk      ; None                        ; None                      ; 12.400 ns               ;
+; N/A                                     ; 34.25 MHz ( period = 29.200 ns )                    ; fee_cal:comb_5|sibman[1] ; bcd_seg:comb_7|segout[4]     ; clk        ; clk      ; None                        ; None                      ; 12.600 ns               ;
+; N/A                                     ; 34.25 MHz ( period = 29.200 ns )                    ; fee_cal:comb_5|sibman[1] ; bcd_seg:comb_7|segout[5]     ; clk        ; clk      ; None                        ; None                      ; 12.600 ns               ;
+; N/A                                     ; 34.25 MHz ( period = 29.200 ns )                    ; fee_cal:comb_5|cheon[3]  ; bcd_seg:comb_7|segout[0]~263 ; clk        ; clk      ; None                        ; None                      ; 14.300 ns               ;
+; N/A                                     ; 34.25 MHz ( period = 29.200 ns )                    ; fee_cal:comb_5|baek[0]   ; bcd_seg:comb_7|segout[0]~263 ; clk        ; clk      ; None                        ; None                      ; 12.400 ns               ;
+; N/A                                     ; 34.25 MHz ( period = 29.200 ns )                    ; fee_cal:comb_5|sibman[1] ; bcd_seg:comb_7|segout[4]~267 ; clk        ; clk      ; None                        ; None                      ; 12.600 ns               ;
+; N/A                                     ; 34.25 MHz ( period = 29.200 ns )                    ; fee_cal:comb_5|sibman[1] ; bcd_seg:comb_7|segout[5]~268 ; clk        ; clk      ; None                        ; None                      ; 12.600 ns               ;
+; N/A                                     ; 34.48 MHz ( period = 29.000 ns )                    ; fee_cal:comb_5|sibman[0] ; bcd_seg:comb_7|segout[4]     ; clk        ; clk      ; None                        ; None                      ; 12.400 ns               ;
+; N/A                                     ; 34.48 MHz ( period = 29.000 ns )                    ; fee_cal:comb_5|sibman[0] ; bcd_seg:comb_7|segout[5]     ; clk        ; clk      ; None                        ; None                      ; 12.400 ns               ;
+; N/A                                     ; 34.48 MHz ( period = 29.000 ns )                    ; fee_cal:comb_5|sibman[3] ; bcd_seg:comb_7|segout[6]     ; clk        ; clk      ; None                        ; None                      ; 12.400 ns               ;
+; N/A                                     ; 34.48 MHz ( period = 29.000 ns )                    ; fee_cal:comb_5|sibman[0] ; bcd_seg:comb_7|segout[4]~267 ; clk        ; clk      ; None                        ; None                      ; 12.400 ns               ;
+; N/A                                     ; 34.48 MHz ( period = 29.000 ns )                    ; fee_cal:comb_5|sibman[0] ; bcd_seg:comb_7|segout[5]~268 ; clk        ; clk      ; None                        ; None                      ; 12.400 ns               ;
+; N/A                                     ; 34.48 MHz ( period = 29.000 ns )                    ; fee_cal:comb_5|sibman[3] ; bcd_seg:comb_7|segout[6]~269 ; clk        ; clk      ; None                        ; None                      ; 12.400 ns               ;
+; N/A                                     ; 34.72 MHz ( period = 28.800 ns )                    ; fee_cal:comb_5|sibman[2] ; bcd_seg:comb_7|segout[6]     ; clk        ; clk      ; None                        ; None                      ; 12.200 ns               ;
+; N/A                                     ; 34.72 MHz ( period = 28.800 ns )                    ; fee_cal:comb_5|sibman[2] ; bcd_seg:comb_7|segout[6]~269 ; clk        ; clk      ; None                        ; None                      ; 12.200 ns               ;
+; N/A                                     ; 34.97 MHz ( period = 28.600 ns )                    ; fee_cal:comb_5|man[0]    ; bcd_seg:comb_7|segout[6]     ; clk        ; clk      ; None                        ; None                      ; 11.900 ns               ;
+; N/A                                     ; 34.97 MHz ( period = 28.600 ns )                    ; fee_cal:comb_5|man[0]    ; bcd_seg:comb_7|segout[6]~269 ; clk        ; clk      ; None                        ; None                      ; 11.900 ns               ;
+; N/A                                     ; 35.34 MHz ( period = 28.300 ns )                    ; fee_cal:comb_5|cheon[3]  ; bcd_seg:comb_7|segout[1]     ; clk        ; clk      ; None                        ; None                      ; 13.400 ns               ;
+; N/A                                     ; 35.34 MHz ( period = 28.300 ns )                    ; fee_cal:comb_5|cheon[3]  ; bcd_seg:comb_7|segout[3]     ; clk        ; clk      ; None                        ; None                      ; 13.400 ns               ;
+; N/A                                     ; 35.34 MHz ( period = 28.300 ns )                    ; fee_cal:comb_5|cheon[3]  ; bcd_seg:comb_7|segout[1]~264 ; clk        ; clk      ; None                        ; None                      ; 13.400 ns               ;
+; N/A                                     ; 35.34 MHz ( period = 28.300 ns )                    ; fee_cal:comb_5|cheon[3]  ; bcd_seg:comb_7|segout[3]~266 ; clk        ; clk      ; None                        ; None                      ; 13.400 ns               ;
+; N/A                                     ; 35.46 MHz ( period = 28.200 ns )                    ; fee_cal:comb_5|cheon[3]  ; bcd_seg:comb_7|segout[4]     ; clk        ; clk      ; None                        ; None                      ; 13.300 ns               ;
+; N/A                                     ; 35.46 MHz ( period = 28.200 ns )                    ; fee_cal:comb_5|cheon[3]  ; bcd_seg:comb_7|segout[5]     ; clk        ; clk      ; None                        ; None                      ; 13.300 ns               ;
+; N/A                                     ; 35.46 MHz ( period = 28.200 ns )                    ; fee_cal:comb_5|cheon[3]  ; bcd_seg:comb_7|segout[4]~267 ; clk        ; clk      ; None                        ; None                      ; 13.300 ns               ;
+; N/A                                     ; 35.46 MHz ( period = 28.200 ns )                    ; fee_cal:comb_5|cheon[3]  ; bcd_seg:comb_7|segout[5]~268 ; clk        ; clk      ; None                        ; None                      ; 13.300 ns               ;
+; N/A                                     ; 35.59 MHz ( period = 28.100 ns )                    ; fee_cal:comb_5|cheon[2]  ; bcd_seg:comb_7|segout[0]     ; clk        ; clk      ; None                        ; None                      ; 13.200 ns               ;
+; N/A                                     ; 35.59 MHz ( period = 28.100 ns )                    ; fee_cal:comb_5|cheon[2]  ; bcd_seg:comb_7|segout[2]     ; clk        ; clk      ; None                        ; None                      ; 13.200 ns               ;
+; N/A                                     ; 35.59 MHz ( period = 28.100 ns )                    ; fee_cal:comb_5|cheon[2]  ; bcd_seg:comb_7|segout[0]~263 ; clk        ; clk      ; None                        ; None                      ; 13.200 ns               ;
+; N/A                                     ; 35.59 MHz ( period = 28.100 ns )                    ; fee_cal:comb_5|cheon[2]  ; bcd_seg:comb_7|segout[2]~265 ; clk        ; clk      ; None                        ; None                      ; 13.200 ns               ;
+; N/A                                     ; 35.71 MHz ( period = 28.000 ns )                    ; fee_cal:comb_5|cheon[1]  ; bcd_seg:comb_7|segout[0]     ; clk        ; clk      ; None                        ; None                      ; 13.100 ns               ;
+; N/A                                     ; 35.71 MHz ( period = 28.000 ns )                    ; fee_cal:comb_5|cheon[1]  ; bcd_seg:comb_7|segout[2]     ; clk        ; clk      ; None                        ; None                      ; 13.100 ns               ;
+; N/A                                     ; 35.71 MHz ( period = 28.000 ns )                    ; fee_cal:comb_5|cheon[1]  ; bcd_seg:comb_7|segout[0]~263 ; clk        ; clk      ; None                        ; None                      ; 13.100 ns               ;
+; N/A                                     ; 35.71 MHz ( period = 28.000 ns )                    ; fee_cal:comb_5|cheon[1]  ; bcd_seg:comb_7|segout[2]~265 ; clk        ; clk      ; None                        ; None                      ; 13.100 ns               ;
+; N/A                                     ; 35.97 MHz ( period = 27.800 ns )                    ; fee_cal:comb_5|cheon[0]  ; bcd_seg:comb_7|segout[0]     ; clk        ; clk      ; None                        ; None                      ; 12.900 ns               ;
+; N/A                                     ; 35.97 MHz ( period = 27.800 ns )                    ; fee_cal:comb_5|cheon[0]  ; bcd_seg:comb_7|segout[2]     ; clk        ; clk      ; None                        ; None                      ; 12.900 ns               ;
+; N/A                                     ; 35.97 MHz ( period = 27.800 ns )                    ; fee_cal:comb_5|cheon[0]  ; bcd_seg:comb_7|segout[0]~263 ; clk        ; clk      ; None                        ; None                      ; 12.900 ns               ;
+; N/A                                     ; 35.97 MHz ( period = 27.800 ns )                    ; fee_cal:comb_5|cheon[0]  ; bcd_seg:comb_7|segout[2]~265 ; clk        ; clk      ; None                        ; None                      ; 12.900 ns               ;
+; N/A                                     ; 36.50 MHz ( period = 27.400 ns )                    ; fee_cal:comb_5|cheon[3]  ; bcd_seg:comb_7|segout[2]     ; clk        ; clk      ; None                        ; None                      ; 12.500 ns               ;
+; N/A                                     ; 36.50 MHz ( period = 27.400 ns )                    ; fee_cal:comb_5|cheon[3]  ; bcd_seg:comb_7|segout[2]~265 ; clk        ; clk      ; None                        ; None                      ; 12.500 ns               ;
+; N/A                                     ; 36.76 MHz ( period = 27.200 ns )                    ; fee_cal:comb_5|cheon[2]  ; bcd_seg:comb_7|segout[1]     ; clk        ; clk      ; None                        ; None                      ; 12.300 ns               ;
+; N/A                                     ; 36.76 MHz ( period = 27.200 ns )                    ; fee_cal:comb_5|cheon[2]  ; bcd_seg:comb_7|segout[3]     ; clk        ; clk      ; None                        ; None                      ; 12.300 ns               ;
+; N/A                                     ; 36.76 MHz ( period = 27.200 ns )                    ; fee_cal:comb_5|cheon[2]  ; bcd_seg:comb_7|segout[1]~264 ; clk        ; clk      ; None                        ; None                      ; 12.300 ns               ;
+; N/A                                     ; 36.76 MHz ( period = 27.200 ns )                    ; fee_cal:comb_5|cheon[2]  ; bcd_seg:comb_7|segout[3]~266 ; clk        ; clk      ; None                        ; None                      ; 12.300 ns               ;
+; N/A                                     ; 36.90 MHz ( period = 27.100 ns )                    ; fee_cal:comb_5|cheon[2]  ; bcd_seg:comb_7|segout[5]     ; clk        ; clk      ; None                        ; None                      ; 12.200 ns               ;
+; N/A                                     ; 36.90 MHz ( period = 27.100 ns )                    ; fee_cal:comb_5|cheon[1]  ; bcd_seg:comb_7|segout[1]~264 ; clk        ; clk      ; None                        ; None                      ; 12.200 ns               ;
+; N/A                                     ; 36.90 MHz ( period = 27.100 ns )                    ; fee_cal:comb_5|cheon[1]  ; bcd_seg:comb_7|segout[3]~266 ; clk        ; clk      ; None                        ; None                      ; 12.200 ns               ;
+; N/A                                     ; 36.90 MHz ( period = 27.100 ns )                    ; fee_cal:comb_5|cheon[2]  ; bcd_seg:comb_7|segout[4]~267 ; clk        ; clk      ; None                        ; None                      ; 12.200 ns               ;
+; Timing analysis restricted to 200 rows. ; To change the limit use Settings (Assignments menu) ;                          ;                              ;            ;          ;                             ;                           ;                         ;
++-----------------------------------------+-----------------------------------------------------+--------------------------+------------------------------+------------+----------+-----------------------------+---------------------------+-------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Clock Hold: 'clk'                                                                                                                                                                                             ;
++------------------------------------------+----------------------------+--------------------------+------------+----------+----------------------------+----------------------------+--------------------------+
+; Minimum Slack                            ; From                       ; To                       ; From Clock ; To Clock ; Required Hold Relationship ; Required Shortest P2P Time ; Actual Shortest P2P Time ;
++------------------------------------------+----------------------------+--------------------------+------------+----------+----------------------------+----------------------------+--------------------------+
+; Not operational: Clock Skew > Data Delay ; meter_cal:comb_6|status.10 ; fee_cal:comb_5|baek[0]   ; clk        ; clk      ; None                       ; None                       ; 2.500 ns                 ;
+; Not operational: Clock Skew > Data Delay ; meter_cal:comb_6|status.10 ; fee_cal:comb_5|baek[1]   ; clk        ; clk      ; None                       ; None                       ; 2.700 ns                 ;
+; Not operational: Clock Skew > Data Delay ; meter_cal:comb_6|status.01 ; fee_cal:comb_5|baek[0]   ; clk        ; clk      ; None                       ; None                       ; 2.800 ns                 ;
+; Not operational: Clock Skew > Data Delay ; meter_cal:comb_6|status.01 ; fee_cal:comb_5|baek[3]   ; clk        ; clk      ; None                       ; None                       ; 2.800 ns                 ;
+; Not operational: Clock Skew > Data Delay ; fee_cal:comb_5|flag        ; fee_cal:comb_5|baek[3]   ; clk        ; clk      ; None                       ; None                       ; 3.600 ns                 ;
+; Not operational: Clock Skew > Data Delay ; fee_cal:comb_5|flag        ; fee_cal:comb_5|baek[0]   ; clk        ; clk      ; None                       ; None                       ; 3.800 ns                 ;
+; Not operational: Clock Skew > Data Delay ; fee_cal:comb_5|flag        ; fee_cal:comb_5|baek[1]   ; clk        ; clk      ; None                       ; None                       ; 3.800 ns                 ;
+; Not operational: Clock Skew > Data Delay ; fee_cal:comb_5|flag        ; fee_cal:comb_5|baek[2]   ; clk        ; clk      ; None                       ; None                       ; 3.900 ns                 ;
+; Not operational: Clock Skew > Data Delay ; meter_cal:comb_6|status.10 ; fee_cal:comb_5|baek[2]   ; clk        ; clk      ; None                       ; None                       ; 4.500 ns                 ;
+; Not operational: Clock Skew > Data Delay ; meter_cal:comb_6|status.10 ; fee_cal:comb_5|man[0]    ; clk        ; clk      ; None                       ; None                       ; 4.300 ns                 ;
+; Not operational: Clock Skew > Data Delay ; meter_cal:comb_6|status.01 ; fee_cal:comb_5|baek[2]   ; clk        ; clk      ; None                       ; None                       ; 4.600 ns                 ;
+; Not operational: Clock Skew > Data Delay ; meter_cal:comb_6|status.10 ; fee_cal:comb_5|man[3]    ; clk        ; clk      ; None                       ; None                       ; 4.500 ns                 ;
+; Not operational: Clock Skew > Data Delay ; fee_cal:comb_5|flag        ; fee_cal:comb_5|man[3]    ; clk        ; clk      ; None                       ; None                       ; 4.700 ns                 ;
+; Not operational: Clock Skew > Data Delay ; meter_cal:comb_6|status.01 ; fee_cal:comb_5|baek[1]   ; clk        ; clk      ; None                       ; None                       ; 5.400 ns                 ;
+; Not operational: Clock Skew > Data Delay ; fee_cal:comb_5|flag        ; fee_cal:comb_5|man[0]    ; clk        ; clk      ; None                       ; None                       ; 5.600 ns                 ;
+; Not operational: Clock Skew > Data Delay ; fee_cal:comb_5|flag        ; fee_cal:comb_5|sibman[2] ; clk        ; clk      ; None                       ; None                       ; 6.100 ns                 ;
+; Not operational: Clock Skew > Data Delay ; fee_cal:comb_5|flag        ; fee_cal:comb_5|sibman[3] ; clk        ; clk      ; None                       ; None                       ; 6.100 ns                 ;
+; Not operational: Clock Skew > Data Delay ; meter_cal:comb_6|status.10 ; fee_cal:comb_5|cheon[0]  ; clk        ; clk      ; None                       ; None                       ; 4.500 ns                 ;
+; Not operational: Clock Skew > Data Delay ; meter_cal:comb_6|status.10 ; fee_cal:comb_5|sibman[2] ; clk        ; clk      ; None                       ; None                       ; 7.000 ns                 ;
+; Not operational: Clock Skew > Data Delay ; meter_cal:comb_6|status.10 ; fee_cal:comb_5|sibman[3] ; clk        ; clk      ; None                       ; None                       ; 7.000 ns                 ;
+; Not operational: Clock Skew > Data Delay ; meter_cal:comb_6|status.10 ; fee_cal:comb_5|man[2]    ; clk        ; clk      ; None                       ; None                       ; 7.300 ns                 ;
+; Not operational: Clock Skew > Data Delay ; meter_cal:comb_6|status.10 ; fee_cal:comb_5|sibman[0] ; clk        ; clk      ; None                       ; None                       ; 7.200 ns                 ;
+; Not operational: Clock Skew > Data Delay ; meter_cal:comb_6|status.01 ; fee_cal:comb_5|sibman[2] ; clk        ; clk      ; None                       ; None                       ; 7.200 ns                 ;
+; Not operational: Clock Skew > Data Delay ; meter_cal:comb_6|status.01 ; fee_cal:comb_5|sibman[3] ; clk        ; clk      ; None                       ; None                       ; 7.200 ns                 ;
+; Not operational: Clock Skew > Data Delay ; fee_cal:comb_5|flag        ; fee_cal:comb_5|man[2]    ; clk        ; clk      ; None                       ; None                       ; 7.500 ns                 ;
+; Not operational: Clock Skew > Data Delay ; fee_cal:comb_5|flag        ; fee_cal:comb_5|sibman[0] ; clk        ; clk      ; None                       ; None                       ; 7.400 ns                 ;
+; Not operational: Clock Skew > Data Delay ; meter_cal:comb_6|status.10 ; fee_cal:comb_5|man[1]    ; clk        ; clk      ; None                       ; None                       ; 7.600 ns                 ;
+; Not operational: Clock Skew > Data Delay ; meter_cal:comb_6|status.10 ; fee_cal:comb_5|sibman[1] ; clk        ; clk      ; None                       ; None                       ; 7.500 ns                 ;
+; Not operational: Clock Skew > Data Delay ; fee_cal:comb_5|flag        ; fee_cal:comb_5|man[1]    ; clk        ; clk      ; None                       ; None                       ; 7.800 ns                 ;
+; Not operational: Clock Skew > Data Delay ; fee_cal:comb_5|flag        ; fee_cal:comb_5|sibman[1] ; clk        ; clk      ; None                       ; None                       ; 7.700 ns                 ;
++------------------------------------------+----------------------------+--------------------------+------------+----------+----------------------------+----------------------------+--------------------------+
+
+
++---------------------------------------------------------------------------------------+
+; tsu                                                                                   ;
++-------+--------------+------------+---------+------------------------------+----------+
+; Slack ; Required tsu ; Actual tsu ; From    ; To                           ; To Clock ;
++-------+--------------+------------+---------+------------------------------+----------+
+; N/A   ; None         ; 16.300 ns  ; bus     ; bcd_seg:comb_7|segout[6]     ; clk      ;
+; N/A   ; None         ; 16.300 ns  ; bus     ; bcd_seg:comb_7|segout[6]~269 ; clk      ;
+; N/A   ; None         ; 10.600 ns  ; bus     ; bcd_seg:comb_7|common[6]     ; clk      ;
+; N/A   ; None         ; 10.600 ns  ; bus     ; bcd_seg:comb_7|common[7]     ; clk      ;
+; N/A   ; None         ; 10.600 ns  ; bus     ; bcd_seg:comb_7|common[6]~99  ; clk      ;
+; N/A   ; None         ; 10.600 ns  ; bus     ; bcd_seg:comb_7|common[7]~100 ; clk      ;
+; N/A   ; None         ; 9.800 ns   ; bus     ; bcd_seg:comb_7|common[3]     ; clk      ;
+; N/A   ; None         ; 9.800 ns   ; bus     ; bcd_seg:comb_7|common[3]~96  ; clk      ;
+; N/A   ; None         ; 9.500 ns   ; bus     ; bcd_seg:comb_7|cnt[1]        ; clk      ;
+; N/A   ; None         ; 9.300 ns   ; bus     ; bcd_seg:comb_7|cnt[0]        ; clk      ;
+; N/A   ; None         ; 9.300 ns   ; bus     ; bcd_seg:comb_7|common[5]     ; clk      ;
+; N/A   ; None         ; 9.300 ns   ; bus     ; bcd_seg:comb_7|common[5]~98  ; clk      ;
+; N/A   ; None         ; 9.200 ns   ; bus     ; bcd_seg:comb_7|common[2]     ; clk      ;
+; N/A   ; None         ; 9.200 ns   ; bus     ; bcd_seg:comb_7|common[2]~95  ; clk      ;
+; N/A   ; None         ; 9.100 ns   ; bus     ; bcd_seg:comb_7|common[4]     ; clk      ;
+; N/A   ; None         ; 9.100 ns   ; bus     ; bcd_seg:comb_7|common[4]~97  ; clk      ;
+; N/A   ; None         ; 8.200 ns   ; bus     ; lcd_text:comb_10|lcd_data[3] ; clk      ;
+; N/A   ; None         ; 8.200 ns   ; bus     ; lcd_text:comb_10|lcd_data[6] ; clk      ;
+; N/A   ; None         ; 7.700 ns   ; bus     ; lcd_text:comb_10|lcd_data[2] ; clk      ;
+; N/A   ; None         ; 7.600 ns   ; bus     ; bcd_seg:comb_7|segout[0]     ; clk      ;
+; N/A   ; None         ; 7.600 ns   ; bus     ; bcd_seg:comb_7|segout[1]     ; clk      ;
+; N/A   ; None         ; 7.600 ns   ; bus     ; bcd_seg:comb_7|segout[0]~263 ; clk      ;
+; N/A   ; None         ; 7.600 ns   ; bus     ; bcd_seg:comb_7|segout[1]~264 ; clk      ;
+; N/A   ; None         ; 7.500 ns   ; bus     ; bcd_seg:comb_7|segout[2]     ; clk      ;
+; N/A   ; None         ; 7.500 ns   ; bus     ; bcd_seg:comb_7|segout[3]     ; clk      ;
+; N/A   ; None         ; 7.500 ns   ; bus     ; bcd_seg:comb_7|segout[5]     ; clk      ;
+; N/A   ; None         ; 7.500 ns   ; bus     ; bcd_seg:comb_7|segout[2]~265 ; clk      ;
+; N/A   ; None         ; 7.500 ns   ; bus     ; bcd_seg:comb_7|segout[3]~266 ; clk      ;
+; N/A   ; None         ; 7.500 ns   ; bus     ; bcd_seg:comb_7|segout[5]~268 ; clk      ;
+; N/A   ; None         ; 7.400 ns   ; bus     ; bcd_seg:comb_7|segout[4]     ; clk      ;
+; N/A   ; None         ; 7.400 ns   ; bus     ; bcd_seg:comb_7|segout[4]~267 ; clk      ;
+; N/A   ; None         ; 7.100 ns   ; bus     ; bcd_seg:comb_7|cnt[2]        ; clk      ;
+; N/A   ; None         ; 7.000 ns   ; bus     ; lcd_text:comb_10|lcd_data[0] ; clk      ;
+; N/A   ; None         ; 6.800 ns   ; bus     ; lcd_text:comb_10|lcd_data[1] ; clk      ;
+; N/A   ; None         ; 6.100 ns   ; bus     ; lcd_text:comb_10|lcd_data[5] ; clk      ;
+; N/A   ; None         ; 5.700 ns   ; reset   ; meter_cal:comb_6|status.01   ; clk      ;
+; N/A   ; None         ; 5.500 ns   ; reset   ; meter_cal:comb_6|status.10   ; clk      ;
+; N/A   ; None         ; 5.500 ns   ; reset   ; fee_cal:comb_5|flag          ; clk      ;
+; N/A   ; None         ; 5.500 ns   ; bus     ; lcd_text:comb_10|lcd_data[4] ; clk      ;
+; N/A   ; None         ; 5.400 ns   ; bus     ; lcd_text:comb_10|lcd_data[7] ; clk      ;
+; N/A   ; None         ; 5.200 ns   ; reset   ; meter_cal:comb_6|status.00   ; clk      ;
+; N/A   ; None         ; 4.500 ns   ; premium ; meter_cal:comb_6|status.00   ; clk      ;
+; N/A   ; None         ; 4.500 ns   ; premium ; meter_cal:comb_6|status.01   ; clk      ;
+; N/A   ; None         ; 4.400 ns   ; premium ; meter_cal:comb_6|status.10   ; clk      ;
+; N/A   ; None         ; 4.200 ns   ; premium ; fee_cal:comb_5|flag          ; clk      ;
+; N/A   ; None         ; 3.800 ns   ; normal  ; meter_cal:comb_6|status.10   ; clk      ;
+; N/A   ; None         ; 3.800 ns   ; normal  ; meter_cal:comb_6|status.00   ; clk      ;
+; N/A   ; None         ; 3.500 ns   ; normal  ; fee_cal:comb_5|flag          ; clk      ;
+; N/A   ; None         ; 3.300 ns   ; normal  ; meter_cal:comb_6|status.01   ; clk      ;
++-------+--------------+------------+---------+------------------------------+----------+
+
+
++---------------------------------------------------------------------------------------------------+
+; tco                                                                                               ;
++-------+--------------+------------+-------------------------------+------------------+------------+
+; Slack ; Required tco ; Actual tco ; From                          ; To               ; From Clock ;
++-------+--------------+------------+-------------------------------+------------------+------------+
+; N/A   ; None         ; 34.400 ns  ; dot_matrix:comb_8|cnt_data[1] ; dot_d[3]         ; clk        ;
+; N/A   ; None         ; 34.200 ns  ; dot_matrix:comb_8|cnt_data[1] ; dot_d[10]        ; clk        ;
+; N/A   ; None         ; 34.200 ns  ; dot_matrix:comb_8|cnt_data[0] ; dot_d[3]         ; clk        ;
+; N/A   ; None         ; 34.000 ns  ; dot_matrix:comb_8|cnt_data[0] ; dot_d[10]        ; clk        ;
+; N/A   ; None         ; 33.200 ns  ; dot_matrix:comb_8|cnt_data[0] ; dot_d[9]         ; clk        ;
+; N/A   ; None         ; 33.200 ns  ; dot_matrix:comb_8|cnt_data[1] ; dot_d[4]         ; clk        ;
+; N/A   ; None         ; 33.000 ns  ; dot_matrix:comb_8|cnt_data[1] ; dot_d[9]         ; clk        ;
+; N/A   ; None         ; 33.000 ns  ; dot_matrix:comb_8|cnt_data[0] ; dot_d[4]         ; clk        ;
+; N/A   ; None         ; 32.900 ns  ; dot_matrix:comb_8|cnt_data[1] ; dot_d[8]         ; clk        ;
+; N/A   ; None         ; 32.700 ns  ; dot_matrix:comb_8|cnt_data[0] ; dot_d[8]         ; clk        ;
+; N/A   ; None         ; 32.600 ns  ; dot_matrix:comb_8|cnt_data[1] ; dot_d[7]         ; clk        ;
+; N/A   ; None         ; 32.400 ns  ; dot_matrix:comb_8|cnt_data[0] ; dot_d[7]         ; clk        ;
+; N/A   ; None         ; 31.300 ns  ; dot_matrix:comb_8|cnt_data[0] ; dot_d[5]         ; clk        ;
+; N/A   ; None         ; 31.000 ns  ; dot_matrix:comb_8|cnt_data[1] ; dot_d[6]         ; clk        ;
+; N/A   ; None         ; 31.000 ns  ; dot_matrix:comb_8|cnt_data[1] ; dot_d[5]         ; clk        ;
+; N/A   ; None         ; 30.800 ns  ; dot_matrix:comb_8|cnt_data[0] ; dot_d[6]         ; clk        ;
+; N/A   ; None         ; 27.300 ns  ; dot_disp:comb_9|cnt_clk[2]    ; dot_d[10]        ; clk        ;
+; N/A   ; None         ; 27.200 ns  ; dot_disp:comb_9|cnt_clk[1]    ; dot_d[10]        ; clk        ;
+; N/A   ; None         ; 25.400 ns  ; dot_disp:comb_9|cnt_clk[3]    ; dot_d[10]        ; clk        ;
+; N/A   ; None         ; 25.300 ns  ; dot_disp:comb_9|cnt_clk[2]    ; dot_d[8]         ; clk        ;
+; N/A   ; None         ; 25.200 ns  ; dot_disp:comb_9|cnt_clk[2]    ; dot_d[4]         ; clk        ;
+; N/A   ; None         ; 25.100 ns  ; dot_disp:comb_9|cnt_clk[2]    ; dot_scan[9]      ; clk        ;
+; N/A   ; None         ; 24.800 ns  ; dot_disp:comb_9|cnt_clk[4]    ; dot_scan[9]      ; clk        ;
+; N/A   ; None         ; 24.800 ns  ; dot_disp:comb_9|cnt_clk[2]    ; dot_d[5]         ; clk        ;
+; N/A   ; None         ; 24.700 ns  ; dot_disp:comb_9|cnt_clk[1]    ; dot_d[5]         ; clk        ;
+; N/A   ; None         ; 24.500 ns  ; dot_disp:comb_9|cnt_clk[1]    ; dot_d[9]         ; clk        ;
+; N/A   ; None         ; 24.300 ns  ; dot_disp:comb_9|cnt_clk[0]    ; dot_d[10]        ; clk        ;
+; N/A   ; None         ; 24.200 ns  ; dot_disp:comb_9|cnt_clk[4]    ; dot_scan[7]      ; clk        ;
+; N/A   ; None         ; 24.200 ns  ; dot_disp:comb_9|cnt_clk[0]    ; dot_d[8]         ; clk        ;
+; N/A   ; None         ; 24.200 ns  ; dot_disp:comb_9|cnt_clk[1]    ; dot_d[3]         ; clk        ;
+; N/A   ; None         ; 24.100 ns  ; dot_disp:comb_9|cnt_clk[4]    ; dot_scan[4]      ; clk        ;
+; N/A   ; None         ; 24.100 ns  ; dot_disp:comb_9|cnt_clk[0]    ; dot_d[9]         ; clk        ;
+; N/A   ; None         ; 24.100 ns  ; dot_disp:comb_9|cnt_clk[0]    ; dot_d[4]         ; clk        ;
+; N/A   ; None         ; 24.000 ns  ; dot_disp:comb_9|cnt_clk[1]    ; dot_scan[9]      ; clk        ;
+; N/A   ; None         ; 24.000 ns  ; dot_disp:comb_9|cnt_clk[4]    ; dot_scan[2]      ; clk        ;
+; N/A   ; None         ; 23.900 ns  ; dot_disp:comb_9|cnt_clk[4]    ; dot_scan[3]      ; clk        ;
+; N/A   ; None         ; 23.900 ns  ; dot_disp:comb_9|cnt_clk[4]    ; dot_scan[0]      ; clk        ;
+; N/A   ; None         ; 23.700 ns  ; dot_disp:comb_9|cnt_clk[3]    ; dot_scan[9]      ; clk        ;
+; N/A   ; None         ; 23.700 ns  ; dot_disp:comb_9|cnt_clk[2]    ; dot_d[3]         ; clk        ;
+; N/A   ; None         ; 23.300 ns  ; dot_disp:comb_9|cnt_clk[3]    ; dot_scan[5]      ; clk        ;
+; N/A   ; None         ; 23.300 ns  ; dot_disp:comb_9|cnt_clk[4]    ; dot_d[6]         ; clk        ;
+; N/A   ; None         ; 23.300 ns  ; dot_disp:comb_9|cnt_clk[4]    ; dot_d[5]         ; clk        ;
+; N/A   ; None         ; 23.200 ns  ; dot_disp:comb_9|cnt_clk[4]    ; dot_d[4]         ; clk        ;
+; N/A   ; None         ; 23.200 ns  ; dot_disp:comb_9|cnt_clk[0]    ; dot_d[3]         ; clk        ;
+; N/A   ; None         ; 23.100 ns  ; dot_disp:comb_9|cnt_clk[3]    ; dot_d[11]        ; clk        ;
+; N/A   ; None         ; 23.100 ns  ; dot_disp:comb_9|cnt_clk[3]    ; dot_d[0]         ; clk        ;
+; N/A   ; None         ; 23.000 ns  ; dot_disp:comb_9|cnt_clk[3]    ; dot_scan[7]      ; clk        ;
+; N/A   ; None         ; 23.000 ns  ; dot_disp:comb_9|cnt_clk[3]    ; dot_d[12]        ; clk        ;
+; N/A   ; None         ; 22.900 ns  ; dot_disp:comb_9|cnt_clk[3]    ; dot_scan[4]      ; clk        ;
+; N/A   ; None         ; 22.800 ns  ; dot_disp:comb_9|cnt_clk[3]    ; dot_scan[2]      ; clk        ;
+; N/A   ; None         ; 22.800 ns  ; dot_disp:comb_9|cnt_clk[1]    ; dot_d[12]        ; clk        ;
+; N/A   ; None         ; 22.800 ns  ; dot_disp:comb_9|cnt_clk[2]    ; dot_d[11]        ; clk        ;
+; N/A   ; None         ; 22.800 ns  ; dot_disp:comb_9|cnt_clk[1]    ; dot_d[11]        ; clk        ;
+; N/A   ; None         ; 22.800 ns  ; dot_disp:comb_9|cnt_clk[1]    ; dot_d[8]         ; clk        ;
+; N/A   ; None         ; 22.800 ns  ; dot_disp:comb_9|cnt_clk[2]    ; dot_d[6]         ; clk        ;
+; N/A   ; None         ; 22.800 ns  ; dot_disp:comb_9|cnt_clk[3]    ; dot_d[1]         ; clk        ;
+; N/A   ; None         ; 22.700 ns  ; dot_disp:comb_9|cnt_clk[2]    ; dot_scan[5]      ; clk        ;
+; N/A   ; None         ; 22.700 ns  ; dot_disp:comb_9|cnt_clk[3]    ; dot_scan[3]      ; clk        ;
+; N/A   ; None         ; 22.700 ns  ; dot_disp:comb_9|cnt_clk[3]    ; dot_scan[0]      ; clk        ;
+; N/A   ; None         ; 22.600 ns  ; dot_disp:comb_9|cnt_clk[3]    ; dot_d[8]         ; clk        ;
+; N/A   ; None         ; 22.600 ns  ; dot_disp:comb_9|cnt_clk[1]    ; dot_d[6]         ; clk        ;
+; N/A   ; None         ; 22.600 ns  ; dot_disp:comb_9|cnt_clk[1]    ; dot_d[4]         ; clk        ;
+; N/A   ; None         ; 22.600 ns  ; dot_disp:comb_9|cnt_clk[1]    ; dot_d[1]         ; clk        ;
+; N/A   ; None         ; 22.500 ns  ; dot_disp:comb_9|cnt_clk[2]    ; dot_d[0]         ; clk        ;
+; N/A   ; None         ; 22.400 ns  ; dot_disp:comb_9|cnt_clk[1]    ; dot_d[7]         ; clk        ;
+; N/A   ; None         ; 22.300 ns  ; dot_disp:comb_9|cnt_clk[4]    ; dot_scan[5]      ; clk        ;
+; N/A   ; None         ; 22.300 ns  ; dot_disp:comb_9|cnt_clk[0]    ; dot_d[6]         ; clk        ;
+; N/A   ; None         ; 22.200 ns  ; dot_disp:comb_9|cnt_clk[0]    ; dot_scan[5]      ; clk        ;
+; N/A   ; None         ; 22.200 ns  ; dot_disp:comb_9|cnt_clk[4]    ; dot_d[12]        ; clk        ;
+; N/A   ; None         ; 22.100 ns  ; dot_disp:comb_9|cnt_clk[3]    ; dot_d[6]         ; clk        ;
+; N/A   ; None         ; 22.100 ns  ; dot_disp:comb_9|cnt_clk[3]    ; dot_d[5]         ; clk        ;
+; N/A   ; None         ; 22.100 ns  ; dot_disp:comb_9|cnt_clk[4]    ; dot_d[0]         ; clk        ;
+; N/A   ; None         ; 22.000 ns  ; dot_disp:comb_9|cnt_clk[3]    ; dot_d[4]         ; clk        ;
+; N/A   ; None         ; 22.000 ns  ; dot_disp:comb_9|cnt_clk[4]    ; dot_d[1]         ; clk        ;
+; N/A   ; None         ; 22.000 ns  ; dot_disp:comb_9|cnt_clk[0]    ; dot_d[0]         ; clk        ;
+; N/A   ; None         ; 21.900 ns  ; dot_disp:comb_9|cnt_clk[2]    ; dot_d[7]         ; clk        ;
+; N/A   ; None         ; 21.900 ns  ; dot_disp:comb_9|cnt_clk[0]    ; dot_d[5]         ; clk        ;
+; N/A   ; None         ; 21.800 ns  ; dot_disp:comb_9|cnt_clk[0]    ; dot_scan[9]      ; clk        ;
+; N/A   ; None         ; 21.800 ns  ; dot_disp:comb_9|cnt_clk[0]    ; dot_d[11]        ; clk        ;
+; N/A   ; None         ; 21.600 ns  ; dot_disp:comb_9|cnt_clk[4]    ; dot_scan[6]      ; clk        ;
+; N/A   ; None         ; 21.400 ns  ; dot_disp:comb_9|cnt_clk[0]    ; dot_d[7]         ; clk        ;
+; N/A   ; None         ; 21.000 ns  ; dot_disp:comb_9|cnt_clk[1]    ; dot_scan[5]      ; clk        ;
+; N/A   ; None         ; 21.000 ns  ; dot_disp:comb_9|cnt_clk[2]    ; dot_d[9]         ; clk        ;
+; N/A   ; None         ; 20.900 ns  ; dot_disp:comb_9|cnt_clk[1]    ; dot_scan[7]      ; clk        ;
+; N/A   ; None         ; 20.900 ns  ; dot_disp:comb_9|cnt_clk[3]    ; dot_d[9]         ; clk        ;
+; N/A   ; None         ; 20.800 ns  ; dot_disp:comb_9|cnt_clk[1]    ; dot_scan[2]      ; clk        ;
+; N/A   ; None         ; 20.800 ns  ; dot_disp:comb_9|cnt_clk[1]    ; dot_d[0]         ; clk        ;
+; N/A   ; None         ; 20.700 ns  ; dot_disp:comb_9|cnt_clk[2]    ; dot_scan[7]      ; clk        ;
+; N/A   ; None         ; 20.700 ns  ; dot_disp:comb_9|cnt_clk[2]    ; dot_scan[4]      ; clk        ;
+; N/A   ; None         ; 20.700 ns  ; dot_disp:comb_9|cnt_clk[1]    ; dot_scan[3]      ; clk        ;
+; N/A   ; None         ; 20.700 ns  ; dot_disp:comb_9|cnt_clk[2]    ; dot_scan[0]      ; clk        ;
+; N/A   ; None         ; 20.700 ns  ; dot_disp:comb_9|cnt_clk[2]    ; dot_d[12]        ; clk        ;
+; N/A   ; None         ; 20.700 ns  ; dot_disp:comb_9|cnt_clk[2]    ; dot_d[1]         ; clk        ;
+; N/A   ; None         ; 20.600 ns  ; dot_disp:comb_9|cnt_clk[2]    ; dot_scan[3]      ; clk        ;
+; N/A   ; None         ; 20.600 ns  ; dot_disp:comb_9|cnt_clk[1]    ; dot_scan[0]      ; clk        ;
+; N/A   ; None         ; 20.500 ns  ; dot_disp:comb_9|cnt_clk[1]    ; dot_scan[4]      ; clk        ;
+; N/A   ; None         ; 20.500 ns  ; dot_disp:comb_9|cnt_clk[2]    ; dot_scan[2]      ; clk        ;
+; N/A   ; None         ; 20.400 ns  ; dot_disp:comb_9|cnt_clk[3]    ; dot_scan[6]      ; clk        ;
+; N/A   ; None         ; 20.400 ns  ; dot_disp:comb_9|cnt_clk[0]    ; dot_scan[3]      ; clk        ;
+; N/A   ; None         ; 20.400 ns  ; dot_disp:comb_9|cnt_clk[3]    ; dot_d[3]         ; clk        ;
+; N/A   ; None         ; 20.300 ns  ; dot_disp:comb_9|cnt_clk[4]    ; dot_d[2]         ; clk        ;
+; N/A   ; None         ; 20.200 ns  ; dot_disp:comb_9|cnt_clk[0]    ; dot_scan[7]      ; clk        ;
+; N/A   ; None         ; 20.200 ns  ; dot_disp:comb_9|cnt_clk[0]    ; dot_d[2]         ; clk        ;
+; N/A   ; None         ; 20.200 ns  ; dot_disp:comb_9|cnt_clk[0]    ; dot_d[1]         ; clk        ;
+; N/A   ; None         ; 20.100 ns  ; dot_disp:comb_9|cnt_clk[4]    ; dot_scan[1]      ; clk        ;
+; N/A   ; None         ; 20.000 ns  ; dot_disp:comb_9|cnt_clk[2]    ; dot_scan[8]      ; clk        ;
+; N/A   ; None         ; 20.000 ns  ; dot_disp:comb_9|cnt_clk[0]    ; dot_scan[2]      ; clk        ;
+; N/A   ; None         ; 20.000 ns  ; dot_disp:comb_9|cnt_clk[0]    ; dot_d[12]        ; clk        ;
+; N/A   ; None         ; 20.000 ns  ; dot_disp:comb_9|cnt_clk[4]    ; dot_d[11]        ; clk        ;
+; N/A   ; None         ; 20.000 ns  ; dot_disp:comb_9|cnt_clk[4]    ; dot_d[3]         ; clk        ;
+; N/A   ; None         ; 19.900 ns  ; dot_disp:comb_9|cnt_clk[0]    ; dot_scan[4]      ; clk        ;
+; N/A   ; None         ; 19.900 ns  ; dot_disp:comb_9|cnt_clk[4]    ; dot_d[10]        ; clk        ;
+; N/A   ; None         ; 19.700 ns  ; dot_disp:comb_9|cnt_clk[4]    ; dot_scan[8]      ; clk        ;
+; N/A   ; None         ; 19.700 ns  ; dot_disp:comb_9|cnt_clk[0]    ; dot_scan[0]      ; clk        ;
+; N/A   ; None         ; 19.600 ns  ; dot_disp:comb_9|cnt_clk[3]    ; dot_d[2]         ; clk        ;
+; N/A   ; None         ; 19.100 ns  ; dot_disp:comb_9|cnt_clk[1]    ; dot_d[2]         ; clk        ;
+; N/A   ; None         ; 18.900 ns  ; clk_div:comb_4|clk_out        ; lcd_e            ; clk        ;
+; N/A   ; None         ; 18.900 ns  ; dot_disp:comb_9|cnt_clk[1]    ; dot_scan[8]      ; clk        ;
+; N/A   ; None         ; 18.900 ns  ; dot_disp:comb_9|cnt_clk[3]    ; dot_scan[1]      ; clk        ;
+; N/A   ; None         ; 18.800 ns  ; lcd_text:comb_10|lcd_data[7]  ; lcd_data[7]      ; clk        ;
+; N/A   ; None         ; 18.800 ns  ; lcd_text:comb_10|lcd_data[6]  ; lcd_data[6]      ; clk        ;
+; N/A   ; None         ; 18.800 ns  ; lcd_text:comb_10|lcd_data[5]  ; lcd_data[5]      ; clk        ;
+; N/A   ; None         ; 18.800 ns  ; lcd_text:comb_10|lcd_data[4]  ; lcd_data[4]      ; clk        ;
+; N/A   ; None         ; 18.800 ns  ; lcd_text:comb_10|lcd_data[3]  ; lcd_data[3]      ; clk        ;
+; N/A   ; None         ; 18.800 ns  ; lcd_text:comb_10|lcd_data[2]  ; lcd_data[2]      ; clk        ;
+; N/A   ; None         ; 18.800 ns  ; lcd_text:comb_10|lcd_data[1]  ; lcd_data[1]      ; clk        ;
+; N/A   ; None         ; 18.800 ns  ; lcd_text:comb_10|lcd_data[0]  ; lcd_data[0]      ; clk        ;
+; N/A   ; None         ; 18.800 ns  ; lcd_text:comb_10|lcd_rs       ; lcd_rs           ; clk        ;
+; N/A   ; None         ; 18.600 ns  ; dot_disp:comb_9|cnt_clk[3]    ; dot_scan[8]      ; clk        ;
+; N/A   ; None         ; 18.600 ns  ; dot_disp:comb_9|cnt_clk[3]    ; dot_d[7]         ; clk        ;
+; N/A   ; None         ; 18.400 ns  ; dot_disp:comb_9|cnt_clk[2]    ; dot_scan[6]      ; clk        ;
+; N/A   ; None         ; 18.200 ns  ; dot_disp:comb_9|cnt_clk[1]    ; dot_scan[6]      ; clk        ;
+; N/A   ; None         ; 18.200 ns  ; dot_disp:comb_9|cnt_clk[4]    ; dot_d[9]         ; clk        ;
+; N/A   ; None         ; 18.200 ns  ; dot_disp:comb_9|cnt_clk[4]    ; dot_d[7]         ; clk        ;
+; N/A   ; None         ; 18.100 ns  ; dot_disp:comb_9|cnt_clk[0]    ; dot_scan[6]      ; clk        ;
+; N/A   ; None         ; 18.100 ns  ; dot_disp:comb_9|cnt_clk[0]    ; dot_scan[1]      ; clk        ;
+; N/A   ; None         ; 18.000 ns  ; dot_disp:comb_9|cnt_clk[4]    ; dot_d[8]         ; clk        ;
+; N/A   ; None         ; 18.000 ns  ; dot_disp:comb_9|cnt_clk[2]    ; dot_d[2]         ; clk        ;
+; N/A   ; None         ; 17.800 ns  ; dot_disp:comb_9|cnt_clk[2]    ; dot_scan[1]      ; clk        ;
+; N/A   ; None         ; 17.500 ns  ; dot_disp:comb_9|cnt_clk[0]    ; dot_scan[8]      ; clk        ;
+; N/A   ; None         ; 16.700 ns  ; dot_disp:comb_9|cnt_clk[1]    ; dot_scan[1]      ; clk        ;
+; N/A   ; None         ; 15.100 ns  ; bcd_seg:comb_7|common[6]      ;  renamed_port_12 ; clk        ;
+; N/A   ; None         ; 15.000 ns  ; bcd_seg:comb_7|segout[5]      ;  renamed_port_4  ; clk        ;
+; N/A   ; None         ; 14.900 ns  ; bcd_seg:comb_7|common[4]      ;  renamed_port_14 ; clk        ;
+; N/A   ; None         ; 14.400 ns  ; bcd_seg:comb_7|segout[0]      ;  renamed_port_9  ; clk        ;
+; N/A   ; None         ; 14.000 ns  ; bcd_seg:comb_7|common[5]      ;  renamed_port_13 ; clk        ;
+; N/A   ; None         ; 13.500 ns  ; bcd_seg:comb_7|common[7]~100  ; common[7]        ; clk        ;
+; N/A   ; None         ; 13.500 ns  ; bcd_seg:comb_7|common[6]~99   ; common[6]        ; clk        ;
+; N/A   ; None         ; 13.500 ns  ; bcd_seg:comb_7|common[5]~98   ; common[5]        ; clk        ;
+; N/A   ; None         ; 13.500 ns  ; bcd_seg:comb_7|common[4]~97   ; common[4]        ; clk        ;
+; N/A   ; None         ; 13.500 ns  ; bcd_seg:comb_7|common[3]~96   ; common[3]        ; clk        ;
+; N/A   ; None         ; 13.500 ns  ; bcd_seg:comb_7|segout[6]~269  ; segout[6]        ; clk        ;
+; N/A   ; None         ; 13.500 ns  ; bcd_seg:comb_7|segout[5]~268  ; segout[5]        ; clk        ;
+; N/A   ; None         ; 13.500 ns  ; bcd_seg:comb_7|segout[4]~267  ; segout[4]        ; clk        ;
+; N/A   ; None         ; 13.500 ns  ; bcd_seg:comb_7|segout[3]~266  ; segout[3]        ; clk        ;
+; N/A   ; None         ; 13.500 ns  ; bcd_seg:comb_7|segout[2]~265  ; segout[2]        ; clk        ;
+; N/A   ; None         ; 13.500 ns  ; bcd_seg:comb_7|segout[1]~264  ; segout[1]        ; clk        ;
+; N/A   ; None         ; 13.500 ns  ; bcd_seg:comb_7|segout[0]~263  ; segout[0]        ; clk        ;
+; N/A   ; None         ; 12.900 ns  ; bcd_seg:comb_7|common[2]~95   ; common[2]        ; clk        ;
+; N/A   ; None         ; 12.900 ns  ; bcd_seg:comb_7|common[3]      ;  renamed_port_15 ; clk        ;
+; N/A   ; None         ; 12.800 ns  ; bcd_seg:comb_7|common[2]      ;  renamed_port_16 ; clk        ;
+; N/A   ; None         ; 12.700 ns  ; bcd_seg:comb_7|common[7]      ;  renamed_port_11 ; clk        ;
+; N/A   ; None         ; 12.700 ns  ; bcd_seg:comb_7|segout[6]      ;  renamed_port_3  ; clk        ;
+; N/A   ; None         ; 12.700 ns  ; bcd_seg:comb_7|segout[4]      ;  renamed_port_5  ; clk        ;
+; N/A   ; None         ; 12.700 ns  ; bcd_seg:comb_7|segout[3]      ;  renamed_port_6  ; clk        ;
+; N/A   ; None         ; 12.700 ns  ; bcd_seg:comb_7|segout[2]      ;  renamed_port_7  ; clk        ;
+; N/A   ; None         ; 12.700 ns  ; bcd_seg:comb_7|segout[1]      ;  renamed_port_8  ; clk        ;
++-------+--------------+------------+-------------------------------+------------------+------------+
+
+
++-------------------------------------------------------------------+
+; tpd                                                               ;
++-------+-------------------+-----------------+-------+-------------+
+; Slack ; Required P2P Time ; Actual P2P Time ; From  ; To          ;
++-------+-------------------+-----------------+-------+-------------+
+; N/A   ; None              ; 30.500 ns       ; reset ; dot_scan[7] ;
+; N/A   ; None              ; 30.400 ns       ; reset ; dot_scan[4] ;
+; N/A   ; None              ; 30.300 ns       ; reset ; dot_scan[2] ;
+; N/A   ; None              ; 30.200 ns       ; reset ; dot_scan[3] ;
+; N/A   ; None              ; 30.200 ns       ; reset ; dot_scan[0] ;
+; N/A   ; None              ; 29.600 ns       ; reset ; dot_d[6]    ;
+; N/A   ; None              ; 29.600 ns       ; reset ; dot_d[5]    ;
+; N/A   ; None              ; 29.500 ns       ; reset ; dot_d[4]    ;
+; N/A   ; None              ; 27.900 ns       ; reset ; dot_scan[6] ;
+; N/A   ; None              ; 26.400 ns       ; reset ; dot_scan[1] ;
+; N/A   ; None              ; 24.700 ns       ; reset ; dot_d[3]    ;
+; N/A   ; None              ; 24.600 ns       ; reset ; dot_scan[5] ;
+; N/A   ; None              ; 24.500 ns       ; reset ; dot_scan[9] ;
+; N/A   ; None              ; 24.500 ns       ; reset ; dot_d[12]   ;
+; N/A   ; None              ; 24.500 ns       ; reset ; dot_d[1]    ;
+; N/A   ; None              ; 24.400 ns       ; reset ; dot_d[11]   ;
+; N/A   ; None              ; 24.400 ns       ; reset ; dot_d[0]    ;
+; N/A   ; None              ; 24.200 ns       ; reset ; dot_d[13]   ;
+; N/A   ; None              ; 24.200 ns       ; reset ; dot_d[2]    ;
+; N/A   ; None              ; 23.700 ns       ; reset ; dot_scan[8] ;
+; N/A   ; None              ; 23.000 ns       ; reset ; dot_d[7]    ;
+; N/A   ; None              ; 22.800 ns       ; reset ; dot_d[9]    ;
+; N/A   ; None              ; 22.800 ns       ; reset ; dot_d[8]    ;
+; N/A   ; None              ; 22.700 ns       ; reset ; dot_d[10]   ;
+; N/A   ; None              ; 22.300 ns       ; reset ; lcd_e       ;
++-------+-------------------+-----------------+-------+-------------+
+
+
++---------------------------------------------------------------------------------------------+
+; th                                                                                          ;
++---------------+-------------+-----------+---------+------------------------------+----------+
+; Minimum Slack ; Required th ; Actual th ; From    ; To                           ; To Clock ;
++---------------+-------------+-----------+---------+------------------------------+----------+
+; N/A           ; None        ; -1.700 ns ; normal  ; meter_cal:comb_6|status.01   ; clk      ;
+; N/A           ; None        ; -1.900 ns ; normal  ; fee_cal:comb_5|flag          ; clk      ;
+; N/A           ; None        ; -2.200 ns ; normal  ; meter_cal:comb_6|status.10   ; clk      ;
+; N/A           ; None        ; -2.200 ns ; normal  ; meter_cal:comb_6|status.00   ; clk      ;
+; N/A           ; None        ; -2.600 ns ; premium ; fee_cal:comb_5|flag          ; clk      ;
+; N/A           ; None        ; -2.800 ns ; premium ; meter_cal:comb_6|status.10   ; clk      ;
+; N/A           ; None        ; -2.900 ns ; premium ; meter_cal:comb_6|status.00   ; clk      ;
+; N/A           ; None        ; -2.900 ns ; premium ; meter_cal:comb_6|status.01   ; clk      ;
+; N/A           ; None        ; -3.100 ns ; bus     ; lcd_text:comb_10|lcd_data[5] ; clk      ;
+; N/A           ; None        ; -3.200 ns ; bus     ; lcd_text:comb_10|lcd_data[0] ; clk      ;
+; N/A           ; None        ; -3.600 ns ; reset   ; meter_cal:comb_6|status.00   ; clk      ;
+; N/A           ; None        ; -3.800 ns ; bus     ; lcd_text:comb_10|lcd_data[7] ; clk      ;
+; N/A           ; None        ; -3.900 ns ; reset   ; meter_cal:comb_6|status.10   ; clk      ;
+; N/A           ; None        ; -3.900 ns ; reset   ; fee_cal:comb_5|flag          ; clk      ;
+; N/A           ; None        ; -3.900 ns ; bus     ; lcd_text:comb_10|lcd_data[2] ; clk      ;
+; N/A           ; None        ; -3.900 ns ; bus     ; lcd_text:comb_10|lcd_data[4] ; clk      ;
+; N/A           ; None        ; -4.000 ns ; bus     ; lcd_text:comb_10|lcd_data[6] ; clk      ;
+; N/A           ; None        ; -4.100 ns ; reset   ; meter_cal:comb_6|status.01   ; clk      ;
+; N/A           ; None        ; -5.200 ns ; bus     ; lcd_text:comb_10|lcd_data[1] ; clk      ;
+; N/A           ; None        ; -5.500 ns ; bus     ; bcd_seg:comb_7|cnt[2]        ; clk      ;
+; N/A           ; None        ; -5.800 ns ; bus     ; bcd_seg:comb_7|segout[4]     ; clk      ;
+; N/A           ; None        ; -5.800 ns ; bus     ; bcd_seg:comb_7|segout[4]~267 ; clk      ;
+; N/A           ; None        ; -5.900 ns ; bus     ; bcd_seg:comb_7|segout[2]     ; clk      ;
+; N/A           ; None        ; -5.900 ns ; bus     ; bcd_seg:comb_7|segout[3]     ; clk      ;
+; N/A           ; None        ; -5.900 ns ; bus     ; bcd_seg:comb_7|segout[5]     ; clk      ;
+; N/A           ; None        ; -5.900 ns ; bus     ; bcd_seg:comb_7|segout[2]~265 ; clk      ;
+; N/A           ; None        ; -5.900 ns ; bus     ; bcd_seg:comb_7|segout[3]~266 ; clk      ;
+; N/A           ; None        ; -5.900 ns ; bus     ; bcd_seg:comb_7|segout[5]~268 ; clk      ;
+; N/A           ; None        ; -6.000 ns ; bus     ; bcd_seg:comb_7|segout[0]     ; clk      ;
+; N/A           ; None        ; -6.000 ns ; bus     ; bcd_seg:comb_7|segout[1]     ; clk      ;
+; N/A           ; None        ; -6.000 ns ; bus     ; bcd_seg:comb_7|segout[0]~263 ; clk      ;
+; N/A           ; None        ; -6.000 ns ; bus     ; bcd_seg:comb_7|segout[1]~264 ; clk      ;
+; N/A           ; None        ; -6.200 ns ; bus     ; bcd_seg:comb_7|common[2]     ; clk      ;
+; N/A           ; None        ; -6.200 ns ; bus     ; bcd_seg:comb_7|common[2]~95  ; clk      ;
+; N/A           ; None        ; -6.600 ns ; bus     ; lcd_text:comb_10|lcd_data[3] ; clk      ;
+; N/A           ; None        ; -7.400 ns ; bus     ; bcd_seg:comb_7|common[3]     ; clk      ;
+; N/A           ; None        ; -7.400 ns ; bus     ; bcd_seg:comb_7|cnt[0]        ; clk      ;
+; N/A           ; None        ; -7.400 ns ; bus     ; bcd_seg:comb_7|common[3]~96  ; clk      ;
+; N/A           ; None        ; -7.500 ns ; bus     ; bcd_seg:comb_7|cnt[1]        ; clk      ;
+; N/A           ; None        ; -7.500 ns ; bus     ; bcd_seg:comb_7|common[4]     ; clk      ;
+; N/A           ; None        ; -7.500 ns ; bus     ; bcd_seg:comb_7|common[4]~97  ; clk      ;
+; N/A           ; None        ; -7.700 ns ; bus     ; bcd_seg:comb_7|common[5]     ; clk      ;
+; N/A           ; None        ; -7.700 ns ; bus     ; bcd_seg:comb_7|common[5]~98  ; clk      ;
+; N/A           ; None        ; -8.300 ns ; bus     ; bcd_seg:comb_7|segout[6]     ; clk      ;
+; N/A           ; None        ; -8.300 ns ; bus     ; bcd_seg:comb_7|segout[6]~269 ; clk      ;
+; N/A           ; None        ; -9.000 ns ; bus     ; bcd_seg:comb_7|common[6]     ; clk      ;
+; N/A           ; None        ; -9.000 ns ; bus     ; bcd_seg:comb_7|common[7]     ; clk      ;
+; N/A           ; None        ; -9.000 ns ; bus     ; bcd_seg:comb_7|common[6]~99  ; clk      ;
+; N/A           ; None        ; -9.000 ns ; bus     ; bcd_seg:comb_7|common[7]~100 ; clk      ;
++---------------+-------------+-----------+---------+------------------------------+----------+
+
+
++--------------------------+
+; Timing Analyzer Messages ;
++--------------------------+
+Info: *******************************************************************
+Info: Running Quartus II Classic Timing Analyzer
+    Info: Version 9.0 Build 235 06/17/2009 Service Pack 2 SJ Web Edition
+    Info: Processing started: Thu Dec 15 21:43:05 2016
+Info: Command: quartus_tan --read_settings_files=off --write_settings_files=off taximeter -c taximeter
+Info: Started post-fitting delay annotation
+Info: Delay annotation completed successfully
+Warning: Timing Analysis is analyzing one or more combinational loops as latches
+    Warning: Node "lcd_text:comb_10|status" is a latch
+Warning: Found pins functioning as undefined clocks and/or memory enables
+    Info: Assuming node "clk" is an undefined clock
+Warning: Found 4 node(s) in clock paths which may be acting as ripple and/or gated clocks -- node(s) analyzed as buffer(s) resulting in clock skew
+    Info: Detected ripple clock "meter_cal:comb_6|clk_out" as buffer
+    Info: Detected ripple clock "meter_cal:comb_6|meter" as buffer
+    Info: Detected ripple clock "clk_div:comb_4|clk_out" as buffer
+    Info: Detected ripple clock "dot_matrix:comb_8|clk_6h" as buffer
+Info: Clock "clk" has Internal fmax of 31.55 MHz between source register "fee_cal:comb_5|man[3]" and destination register "bcd_seg:comb_7|segout[4]" (period= 31.7 ns)
+    Info: + Longest register to register delay is 14.900 ns
+        Info: 1: + IC(0.000 ns) + CELL(0.000 ns) = 0.000 ns; Loc. = LC7_E19; Fanout = 11; REG Node = 'fee_cal:comb_5|man[3]'
+        Info: 2: + IC(1.100 ns) + CELL(2.200 ns) = 3.300 ns; Loc. = LC4_E18; Fanout = 1; COMB Node = 'bcd_seg:comb_7|WideOr30~0'
+        Info: 3: + IC(1.100 ns) + CELL(2.200 ns) = 6.600 ns; Loc. = LC2_E14; Fanout = 1; COMB Node = 'bcd_seg:comb_7|segout~111'
+        Info: 4: + IC(3.300 ns) + CELL(1.900 ns) = 11.800 ns; Loc. = LC6_K17; Fanout = 1; COMB Node = 'bcd_seg:comb_7|segout~112'
+        Info: 5: + IC(0.200 ns) + CELL(1.700 ns) = 13.700 ns; Loc. = LC7_K17; Fanout = 2; COMB Node = 'bcd_seg:comb_7|segout~113'
+        Info: 6: + IC(0.200 ns) + CELL(1.000 ns) = 14.900 ns; Loc. = LC8_K17; Fanout = 3; REG Node = 'bcd_seg:comb_7|segout[4]'
+        Info: Total cell delay = 9.000 ns ( 60.40 % )
+        Info: Total interconnect delay = 5.900 ns ( 39.60 % )
+    Info: - Smallest clock skew is -15.000 ns
+        Info: + Shortest clock path from clock "clk" to destination register is 1.900 ns
+            Info: 1: + IC(0.000 ns) + CELL(0.500 ns) = 0.500 ns; Loc. = PIN_79; Fanout = 42; CLK Node = 'clk'
+            Info: 2: + IC(1.400 ns) + CELL(0.000 ns) = 1.900 ns; Loc. = LC8_K17; Fanout = 3; REG Node = 'bcd_seg:comb_7|segout[4]'
+            Info: Total cell delay = 0.500 ns ( 26.32 % )
+            Info: Total interconnect delay = 1.400 ns ( 73.68 % )
+        Info: - Longest clock path from clock "clk" to source register is 16.900 ns
+            Info: 1: + IC(0.000 ns) + CELL(0.500 ns) = 0.500 ns; Loc. = PIN_79; Fanout = 42; CLK Node = 'clk'
+            Info: 2: + IC(1.400 ns) + CELL(1.100 ns) = 3.000 ns; Loc. = LC1_F9; Fanout = 52; REG Node = 'clk_div:comb_4|clk_out'
+            Info: 3: + IC(4.700 ns) + CELL(1.100 ns) = 8.800 ns; Loc. = LC7_H4; Fanout = 14; REG Node = 'meter_cal:comb_6|clk_out'
+            Info: 4: + IC(2.900 ns) + CELL(1.100 ns) = 12.800 ns; Loc. = LC6_K4; Fanout = 16; REG Node = 'meter_cal:comb_6|meter'
+            Info: 5: + IC(4.100 ns) + CELL(0.000 ns) = 16.900 ns; Loc. = LC7_E19; Fanout = 11; REG Node = 'fee_cal:comb_5|man[3]'
+            Info: Total cell delay = 3.800 ns ( 22.49 % )
+            Info: Total interconnect delay = 13.100 ns ( 77.51 % )
+    Info: + Micro clock to output delay of source is 1.100 ns
+    Info: + Micro setup delay of destination is 0.700 ns
+Warning: Circuit may not operate. Detected 30 non-operational path(s) clocked by clock "clk" with clock skew larger than data delay. See Compilation Report for details.
+Info: Found hold time violation between source  pin or register "meter_cal:comb_6|status.10" and destination pin or register "fee_cal:comb_5|baek[0]" for clock "clk" (Hold time is 6.5 ns)
+    Info: + Largest clock skew is 9.200 ns
+        Info: + Longest clock path from clock "clk" to destination register is 16.900 ns
+            Info: 1: + IC(0.000 ns) + CELL(0.500 ns) = 0.500 ns; Loc. = PIN_79; Fanout = 42; CLK Node = 'clk'
+            Info: 2: + IC(1.400 ns) + CELL(1.100 ns) = 3.000 ns; Loc. = LC1_F9; Fanout = 52; REG Node = 'clk_div:comb_4|clk_out'
+            Info: 3: + IC(4.700 ns) + CELL(1.100 ns) = 8.800 ns; Loc. = LC7_H4; Fanout = 14; REG Node = 'meter_cal:comb_6|clk_out'
+            Info: 4: + IC(2.900 ns) + CELL(1.100 ns) = 12.800 ns; Loc. = LC6_K4; Fanout = 16; REG Node = 'meter_cal:comb_6|meter'
+            Info: 5: + IC(4.100 ns) + CELL(0.000 ns) = 16.900 ns; Loc. = LC2_E21; Fanout = 15; REG Node = 'fee_cal:comb_5|baek[0]'
+            Info: Total cell delay = 3.800 ns ( 22.49 % )
+            Info: Total interconnect delay = 13.100 ns ( 77.51 % )
+        Info: - Shortest clock path from clock "clk" to source register is 7.700 ns
+            Info: 1: + IC(0.000 ns) + CELL(0.500 ns) = 0.500 ns; Loc. = PIN_79; Fanout = 42; CLK Node = 'clk'
+            Info: 2: + IC(1.400 ns) + CELL(1.100 ns) = 3.000 ns; Loc. = LC1_F9; Fanout = 52; REG Node = 'clk_div:comb_4|clk_out'
+            Info: 3: + IC(4.700 ns) + CELL(0.000 ns) = 7.700 ns; Loc. = LC3_E10; Fanout = 18; REG Node = 'meter_cal:comb_6|status.10'
+            Info: Total cell delay = 1.600 ns ( 20.78 % )
+            Info: Total interconnect delay = 6.100 ns ( 79.22 % )
+    Info: - Micro clock to output delay of source is 1.100 ns
+    Info: - Shortest register to register delay is 2.500 ns
+        Info: 1: + IC(0.000 ns) + CELL(0.000 ns) = 0.000 ns; Loc. = LC3_E10; Fanout = 18; REG Node = 'meter_cal:comb_6|status.10'
+        Info: 2: + IC(1.500 ns) + CELL(1.000 ns) = 2.500 ns; Loc. = LC2_E21; Fanout = 15; REG Node = 'fee_cal:comb_5|baek[0]'
+        Info: Total cell delay = 1.000 ns ( 40.00 % )
+        Info: Total interconnect delay = 1.500 ns ( 60.00 % )
+    Info: + Micro hold delay of destination is 0.900 ns
+Info: tsu for register "bcd_seg:comb_7|segout[6]" (data pin = "bus", clock pin = "clk") is 16.300 ns
+    Info: + Longest pin to register delay is 17.500 ns
+        Info: 1: + IC(0.000 ns) + CELL(3.100 ns) = 3.100 ns; Loc. = PIN_92; Fanout = 38; PIN Node = 'bus'
+        Info: 2: + IC(4.000 ns) + CELL(1.900 ns) = 9.000 ns; Loc. = LC1_K10; Fanout = 1; COMB Node = 'bcd_seg:comb_7|segout~161'
+        Info: 3: + IC(2.000 ns) + CELL(1.700 ns) = 12.700 ns; Loc. = LC4_K15; Fanout = 1; COMB Node = 'bcd_seg:comb_7|segout~162'
+        Info: 4: + IC(0.200 ns) + CELL(1.500 ns) = 14.400 ns; Loc. = LC1_K15; Fanout = 1; COMB Node = 'bcd_seg:comb_7|segout~256'
+        Info: 5: + IC(0.000 ns) + CELL(1.900 ns) = 16.300 ns; Loc. = LC2_K15; Fanout = 2; COMB Node = 'bcd_seg:comb_7|segout~180'
+        Info: 6: + IC(0.200 ns) + CELL(1.000 ns) = 17.500 ns; Loc. = LC6_K15; Fanout = 3; REG Node = 'bcd_seg:comb_7|segout[6]'
+        Info: Total cell delay = 11.100 ns ( 63.43 % )
+        Info: Total interconnect delay = 6.400 ns ( 36.57 % )
+    Info: + Micro setup delay of destination is 0.700 ns
+    Info: - Shortest clock path from clock "clk" to destination register is 1.900 ns
+        Info: 1: + IC(0.000 ns) + CELL(0.500 ns) = 0.500 ns; Loc. = PIN_79; Fanout = 42; CLK Node = 'clk'
+        Info: 2: + IC(1.400 ns) + CELL(0.000 ns) = 1.900 ns; Loc. = LC6_K15; Fanout = 3; REG Node = 'bcd_seg:comb_7|segout[6]'
+        Info: Total cell delay = 0.500 ns ( 26.32 % )
+        Info: Total interconnect delay = 1.400 ns ( 73.68 % )
+Info: tco from clock "clk" to destination pin "dot_d[3]" through register "dot_matrix:comb_8|cnt_data[1]" is 34.400 ns
+    Info: + Longest clock path from clock "clk" to source register is 12.400 ns
+        Info: 1: + IC(0.000 ns) + CELL(0.500 ns) = 0.500 ns; Loc. = PIN_79; Fanout = 42; CLK Node = 'clk'
+        Info: 2: + IC(1.400 ns) + CELL(1.100 ns) = 3.000 ns; Loc. = LC1_F9; Fanout = 52; REG Node = 'clk_div:comb_4|clk_out'
+        Info: 3: + IC(4.700 ns) + CELL(1.100 ns) = 8.800 ns; Loc. = LC7_D6; Fanout = 3; REG Node = 'dot_matrix:comb_8|clk_6h'
+        Info: 4: + IC(3.600 ns) + CELL(0.000 ns) = 12.400 ns; Loc. = LC6_C5; Fanout = 10; REG Node = 'dot_matrix:comb_8|cnt_data[1]'
+        Info: Total cell delay = 2.700 ns ( 21.77 % )
+        Info: Total interconnect delay = 9.700 ns ( 78.23 % )
+    Info: + Micro clock to output delay of source is 1.100 ns
+    Info: + Longest register to pin delay is 20.900 ns
+        Info: 1: + IC(0.000 ns) + CELL(0.000 ns) = 0.000 ns; Loc. = LC6_C5; Fanout = 10; REG Node = 'dot_matrix:comb_8|cnt_data[1]'
+        Info: 2: + IC(0.200 ns) + CELL(1.900 ns) = 2.100 ns; Loc. = LC3_C5; Fanout = 3; COMB Node = 'dot_matrix:comb_8|Mux4~3'
+        Info: 3: + IC(2.200 ns) + CELL(2.000 ns) = 6.300 ns; Loc. = LC3_C17; Fanout = 2; COMB Node = 'dot_disp:comb_9|Mux10~0'
+        Info: 4: + IC(1.900 ns) + CELL(1.700 ns) = 9.900 ns; Loc. = LC1_C5; Fanout = 1; COMB Node = 'dot_disp:comb_9|Mux10~1'
+        Info: 5: + IC(2.400 ns) + CELL(8.600 ns) = 20.900 ns; Loc. = PIN_147; Fanout = 0; PIN Node = 'dot_d[3]'
+        Info: Total cell delay = 14.200 ns ( 67.94 % )
+        Info: Total interconnect delay = 6.700 ns ( 32.06 % )
+Info: Longest tpd from source pin "reset" to destination pin "dot_scan[7]" is 30.500 ns
+    Info: 1: + IC(0.000 ns) + CELL(3.400 ns) = 3.400 ns; Loc. = PIN_113; Fanout = 65; PIN Node = 'reset'
+    Info: 2: + IC(7.100 ns) + CELL(1.900 ns) = 12.400 ns; Loc. = LC7_L16; Fanout = 10; COMB Node = 'dot_disp:comb_9|Mux7~0'
+    Info: 3: + IC(4.400 ns) + CELL(2.200 ns) = 19.000 ns; Loc. = LC5_C12; Fanout = 1; COMB Node = 'dot_disp:comb_9|dot_scan[7]~17'
+    Info: 4: + IC(2.900 ns) + CELL(8.600 ns) = 30.500 ns; Loc. = PIN_121; Fanout = 0; PIN Node = 'dot_scan[7]'
+    Info: Total cell delay = 16.100 ns ( 52.79 % )
+    Info: Total interconnect delay = 14.400 ns ( 47.21 % )
+Info: th for register "meter_cal:comb_6|status.01" (data pin = "normal", clock pin = "clk") is -1.700 ns
+    Info: + Longest clock path from clock "clk" to destination register is 7.700 ns
+        Info: 1: + IC(0.000 ns) + CELL(0.500 ns) = 0.500 ns; Loc. = PIN_79; Fanout = 42; CLK Node = 'clk'
+        Info: 2: + IC(1.400 ns) + CELL(1.100 ns) = 3.000 ns; Loc. = LC1_F9; Fanout = 52; REG Node = 'clk_div:comb_4|clk_out'
+        Info: 3: + IC(4.700 ns) + CELL(0.000 ns) = 7.700 ns; Loc. = LC2_E10; Fanout = 13; REG Node = 'meter_cal:comb_6|status.01'
+        Info: Total cell delay = 1.600 ns ( 20.78 % )
+        Info: Total interconnect delay = 6.100 ns ( 79.22 % )
+    Info: + Micro hold delay of destination is 0.900 ns
+    Info: - Shortest pin to register delay is 10.300 ns
+        Info: 1: + IC(0.000 ns) + CELL(3.400 ns) = 3.400 ns; Loc. = PIN_115; Fanout = 5; PIN Node = 'normal'
+        Info: 2: + IC(5.900 ns) + CELL(1.000 ns) = 10.300 ns; Loc. = LC2_E10; Fanout = 13; REG Node = 'meter_cal:comb_6|status.01'
+        Info: Total cell delay = 4.400 ns ( 42.72 % )
+        Info: Total interconnect delay = 5.900 ns ( 57.28 % )
+Info: Quartus II Classic Timing Analyzer was successful. 0 errors, 5 warnings
+    Info: Peak virtual memory: 184 megabytes
+    Info: Processing ended: Thu Dec 15 21:43:05 2016
+    Info: Elapsed time: 00:00:00
+    Info: Total CPU time (on all processors): 00:00:01
+
+

@@ -1,0 +1,10 @@
+<?xml version="1.0" ?>
+<LOG_ROOT>
+	<PROJECT NAME="taximeter">
+		<CBX_INST_ENTRY INSTANCE_NAME="|taximeter|clk_div:comb_4|lpm_add_sub:Add0" CBX_FILE_NAME="add_sub_nlh.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|taximeter|lcd_text:comb_10|lpm_add_sub:Add0" CBX_FILE_NAME="add_sub_3nh.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|taximeter|meter_cal:comb_6|lpm_add_sub:Add0" CBX_FILE_NAME="add_sub_olh.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|taximeter|dot_disp:comb_9|lpm_add_sub:Add0" CBX_FILE_NAME="add_sub_llh.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|taximeter|dot_matrix:comb_8|lpm_add_sub:Add0" CBX_FILE_NAME="add_sub_nlh.tdf"/>
+	</PROJECT>
+</LOG_ROOT>
