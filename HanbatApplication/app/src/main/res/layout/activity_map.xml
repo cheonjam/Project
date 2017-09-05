@@ -1,0 +1,185 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/FrameLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/hanbat" >
+
+    <AbsoluteLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
+
+        <Button
+            android:layout_width="36dp"
+            android:layout_height="33dp"
+            android:text="S1"
+            android:id="@+id/S1"
+            android:layout_x="258dp"
+            android:layout_y="255dp"
+            android:textSize="9dp"
+            android:onClick="onClick" />
+
+        <Button
+            android:layout_width="36dp"
+            android:layout_height="33dp"
+            android:text="N4"
+            android:id="@+id/N4"
+            android:layout_x="178dp"
+            android:layout_y="182dp"
+            android:textSize="9dp"
+            android:onClick="onClick" />
+
+        <Button
+            android:layout_width="36dp"
+            android:layout_height="33dp"
+            android:text="N3"
+            android:id="@+id/N3"
+            android:layout_x="213dp"
+            android:layout_y="213dp"
+            android:textSize="9dp"
+            android:onClick="onClick" />
+
+        <Button
+            android:layout_width="36dp"
+            android:layout_height="33dp"
+            android:text="N5"
+            android:id="@+id/N5"
+            android:layout_x="259dp"
+            android:layout_y="174dp"
+            android:textSize="9dp"
+            android:onClick="onClick" />
+
+        <Button
+            android:layout_width="36dp"
+            android:layout_height="33dp"
+            android:text="N1"
+            android:id="@+id/N1"
+            android:layout_x="115dp"
+            android:layout_y="214dp"
+            android:textSize="9dp"
+            android:onClick="onClick" />
+
+        <Button
+            android:layout_width="36dp"
+            android:layout_height="33dp"
+            android:text="N2"
+            android:id="@+id/N2"
+            android:layout_x="129dp"
+            android:layout_y="165dp"
+            android:textSize="9dp"
+            android:onClick="onClick" />
+
+        <Button
+            android:layout_width="36dp"
+            android:layout_height="33dp"
+            android:text="N6"
+            android:id="@+id/N6"
+            android:layout_x="208dp"
+            android:layout_y="143dp"
+            android:textSize="9dp"
+            android:onClick="onClick" />
+
+        <Button
+            android:layout_width="36dp"
+            android:layout_height="33dp"
+            android:text="N7"
+            android:id="@+id/N7"
+            android:layout_x="271dp"
+            android:layout_y="141dp"
+            android:textSize="9dp"
+            android:onClick="onClick" />
+
+        <Button
+            android:layout_width="36dp"
+            android:layout_height="33dp"
+            android:text="N8"
+            android:id="@+id/N8"
+            android:layout_x="265dp"
+            android:layout_y="86dp"
+            android:textSize="9dp"
+            android:onClick="onClick" />
+
+        <Button
+            android:layout_width="36dp"
+            android:layout_height="33dp"
+            android:text="S5"
+            android:id="@+id/S5"
+            android:layout_x="145dp"
+            android:layout_y="421dp"
+            android:textSize="9dp"
+            android:onClick="onClick" />
+
+        <Button
+            android:layout_width="36dp"
+            android:layout_height="33dp"
+            android:text="S3"
+            android:id="@+id/S3"
+            android:layout_x="121dp"
+            android:layout_y="390dp"
+            android:textSize="9dp"
+            android:onClick="onClick" />
+
+        <Button
+            android:layout_width="36dp"
+            android:layout_height="33dp"
+            android:text="S4"
+            android:id="@+id/S4"
+            android:layout_x="205dp"
+            android:layout_y="331dp"
+            android:textSize="9dp"
+            android:onClick="onClick" />
+
+        <Button
+            android:layout_width="36dp"
+            android:layout_height="33dp"
+            android:text="S2"
+            android:id="@+id/S2"
+            android:layout_x="137dp"
+            android:layout_y="280dp"
+            android:textSize="9dp"
+            android:onClick="onClick" />
+
+        <Button
+            android:layout_width="36dp"
+            android:layout_height="33dp"
+            android:text="S8"
+            android:id="@+id/S8"
+            android:layout_x="289dp"
+            android:layout_y="407dp"
+            android:textSize="9dp"
+            android:onClick="onClick" />
+
+        <Button
+            android:layout_width="36dp"
+            android:layout_height="33dp"
+            android:text="S7"
+            android:id="@+id/S7"
+            android:layout_x="231dp"
+            android:layout_y="467dp"
+            android:textSize="9dp"
+            android:onClick="onClick" />
+
+        <Button
+            android:layout_width="46dp"
+            android:layout_height="33dp"
+            android:text="S10"
+            android:id="@+id/S10"
+            android:layout_x="331dp"
+            android:layout_y="466dp"
+            android:textSize="9dp"
+            android:onClick="onClick" />
+
+        <Button
+            android:layout_width="36dp"
+            android:layout_height="33dp"
+            android:text="S6"
+            android:id="@+id/S6"
+            android:layout_x="274dp"
+            android:layout_y="342dp"
+            android:textSize="9dp"
+            android:onClick="onClick" />
+
+    </AbsoluteLayout>
+
+</FrameLayout>

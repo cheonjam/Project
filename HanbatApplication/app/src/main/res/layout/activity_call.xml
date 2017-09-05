@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+    <Button
+        android:id="@+id/button"
+        android:text="교무처"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        android:background="@drawable/imagebutton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onClick"/>
+
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="학생취업처"
+        android:id="@+id/button1"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        android:background="@drawable/imagebutton2"
+        android:onClick="onClick"/>
+
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="기획처"
+        android:id="@+id/button2"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        android:background="@drawable/imagebutton"
+        android:onClick="onClick"/>
+
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="사무국"
+        android:id="@+id/button3"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        android:background="@drawable/imagebutton2"
+        android:onClick="onClick"/>
+
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="입학관리본부"
+        android:id="@+id/button4"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        android:background="@drawable/imagebutton"
+        android:onClick="onClick"/>
+
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="산학협력단"
+        android:id="@+id/button5"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        android:background="@drawable/imagebutton2"
+        android:onClick="onClick"/>
+
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="평생교육원"
+        android:id="@+id/button6"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        android:background="@drawable/imagebutton"
+        android:onClick="onClick"/>
+
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="전산정보원"
+        android:id="@+id/button7"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        android:background="@drawable/imagebutton2"
+        android:onClick="onClick"/>
+
+</LinearLayout>

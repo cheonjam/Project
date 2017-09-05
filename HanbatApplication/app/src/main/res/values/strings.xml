@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">HanbatMap</string>
+    <string name="xml_name1">n1</string>
+    <string name="xml_name2">n2</string>
+    <string name="xml_name3">n3</string>
+    <string name="xml_name4">n4</string>
+    <string name="xml_name5">n5</string>
+    <string name="xml_name6">n6</string>
+    <string name="xml_name7">n7</string>
+    <string name="xml_name8">n8</string>
+    <string name="xml_name9">s1</string>
+    <string name="xml_name10">s2</string>
+    <string name="xml_name11">s3</string>
+    <string name="xml_name12">s4</string>
+    <string name="xml_name13">s5</string>
+    <string name="xml_name14">s6</string>
+    <string name="xml_name15">s7</string>
+    <string name="xml_name16">s8</string>
+    <string name="xml_name17">s10</string>
+</resources>

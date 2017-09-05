@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.jaemin.hanbatmap">
+
+
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="HanbatApplication"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name="CallActivity"
+            android:label="Call" >
+        </activity>
+
+        <activity
+            android:name="MapActivity"
+            android:label="Map" >
+        </activity>
+
+        <activity
+            android:name="N1Activity"
+            android:label="N1" >
+         </activity>
+
+        <activity
+            android:name="N2Activity"
+            android:label="N2" >
+        </activity>
+
+        <activity
+            android:name="N3Activity"
+            android:label="N3" >
+        </activity>
+
+        <activity
+            android:name="N4Activity"
+            android:label="N4" >
+        </activity>
+
+        <activity
+            android:name="N5Activity"
+            android:label="N5" >
+        </activity>
+
+        <activity
+            android:name="N6Activity"
+            android:label="S1" >
+        </activity>
+
+        <activity
+            android:name="N7Activity"
+            android:label="N7" >
+        </activity>
+
+        <activity
+            android:name="N8Activity"
+            android:label="N8" >
+        </activity>
+
+        <activity
+            android:name="S1Activity"
+            android:label="S1" >
+        </activity>
+
+        <activity
+            android:name="S2Activity"
+            android:label="S2" >
+        </activity>
+
+        <activity
+            android:name="S3Activity"
+            android:label="S3" >
+        </activity>
+
+        <activity
+            android:name="S4Activity"
+            android:label="S4" >
+        </activity>
+
+        <activity
+            android:name="S5Activity"
+            android:label="S5" >
+        </activity>
+
+        <activity
+            android:name="S6Activity"
+            android:label="S6" >
+        </activity>
+
+        <activity
+            android:name="S7Activity"
+            android:label="S7" >
+        </activity>
+
+        <activity
+            android:name="S8Activity"
+            android:label="S8" >
+        </activity>
+
+        <activity
+            android:name="S10Activity"
+            android:label="S10" >
+        </activity>
+
+    </application>
+
+</manifest>

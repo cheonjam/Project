@@ -1,0 +1,135 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:tools="http://schemas.android.com/tools"
+android:id="@+id/FrameLayout1"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:background="@drawable/main">
+
+    <AbsoluteLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_gravity="left|center_vertical">
+
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:id="@+id/imageView"
+            android:layout_x="2dp"
+            android:layout_y="2dp"
+            android:background="@drawable/logo"/>
+
+        <ImageButton
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:id="@+id/icon1"
+            android:layout_x="49dp"
+            android:layout_y="159dp"
+            android:background="@drawable/icon1"
+            android:onClick="onClick"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="캠퍼스지도"
+            android:id="@+id/textView"
+            android:layout_x="54dp"
+            android:layout_y="238dp" />
+
+        <ImageButton
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:id="@+id/icon2"
+            android:layout_x="174dp"
+            android:layout_y="156dp"
+            android:background="@drawable/icon2"
+            android:onClick="onClick"/>
+
+        <ImageButton
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:id="@+id/icon3"
+            android:layout_x="299dp"
+            android:layout_y="156dp"
+            android:background="@drawable/icon3"
+            android:onClick="onClick"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="전화번호안내"
+            android:id="@+id/textView2"
+            android:layout_x="177dp"
+            android:layout_y="237dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="대학/대학원"
+            android:id="@+id/textView3"
+            android:layout_x="302dp"
+            android:layout_y="237dp" />
+
+        <ImageButton
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:id="@+id/icon4"
+            android:layout_x="49dp"
+            android:layout_y="310dp"
+            android:background="@drawable/icon4"
+            android:onClick="onClick" />
+
+        <ImageButton
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:id="@+id/icon5"
+            android:layout_x="174dp"
+            android:layout_y="310dp"
+            android:background="@drawable/icon5"
+            android:onClick="onClick" />
+
+        <ImageButton
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:id="@+id/icon6"
+            android:layout_x="299dp"
+            android:layout_y="310dp"
+            android:background="@drawable/icon6"
+            android:onClick="onClick" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="공지사항"
+            android:id="@+id/textView4"
+            android:layout_x="63dp"
+            android:layout_y="390dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="취업정보"
+            android:id="@+id/textView5"
+            android:layout_x="187dp"
+            android:layout_y="390dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="입학안내"
+            android:id="@+id/textView6"
+            android:layout_x="315dp"
+            android:layout_y="390dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="20121794 천재민"
+            android:id="@+id/textView7"
+            android:layout_x="289dp"
+            android:layout_y="11dp" />
+
+    </AbsoluteLayout>
+
+</FrameLayout>
